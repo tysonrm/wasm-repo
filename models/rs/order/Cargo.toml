@@ -5,14 +5,20 @@ edition = "2024"
 
 [dependencies]
 anyhow = "1.0.92"
+derive = "1.0.0"
+features = "0.10.0"
 serde = { version = "1.0.214", features = ["derive"] }
 serde_json = "1.0.132"
 wit-bindgen-rt = { version = "0.34.0", features = ["bitflags"] }
+quote = "1.0.37"
 taho-macro.workspace = true
+thiserror = "2.0.3"
 cargo-component-bindings = "0.6.0"
+multiaddr = "0.18.2"
 
 [dev-dependencies]
 cargo-expand = "1.0.95"
+
 
 [lib]
 crate-type = ["cdylib"]
@@ -22,3 +28,6 @@ package = "taho:models"
 
 [package.metadata.component.target]
 path = "../../wit"
+
+#[package.metadata.component.dependencies.target]
+#path = "../customer"

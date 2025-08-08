@@ -19,10 +19,6 @@ multiaddr = "0.18.2"
 [dev-dependencies]
 cargo-expand = "1.0.95"
 
-[build-dependencies]
-tokio = "1.44.2"
-wit-bindgen = "0.41.0"
-
 [lib]
 crate-type = ["cdylib"]
 
