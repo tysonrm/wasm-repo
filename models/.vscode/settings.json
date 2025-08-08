@@ -1,0 +1,13 @@
+{
+  "rust-analyzer.check.overrideCommand": [
+    "cargo",
+    "component",
+    "check",
+    "--workspace",
+    "--all-targets",
+    "--message-format=json"
+  ],
+  "files.associations": {
+    "stdio.h": "c"
+  }
+}

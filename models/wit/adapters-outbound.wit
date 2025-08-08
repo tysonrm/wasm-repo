@@ -1,0 +1,10 @@
+
+
+interface outbound-adapter {
+  use model-data.{model-instance};
+  
+  resource adapters {
+    invoke-adapter: func(data: model-instance) -> result<model-instance, string>;
+    invoke-streaming-adapter: func(%stream: option<list<u8>>) -> tuple<option<list<u8>>, option<string>>;
+  }
+}

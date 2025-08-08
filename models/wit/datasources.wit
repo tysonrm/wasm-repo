@@ -1,0 +1,57 @@
+
+interface datasource {
+    type key-value = option<list<tuple<string,string>>>;
+
+    variant error { error(string) }
+
+    resource storage-api {
+        constructor(config: key-value);
+        save: func(query: key-value, data: list<u8>) -> result<string, error>;
+        find: func(query: key-value) -> result<list<u8>, error>;
+        delete: func(query: key-value) -> result<s32, error>;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/*
+interface data-source {
+    use model-data.{};
+    use query.{query-set};
+
+    record storage-info {
+        name: string,
+        purpose: string,
+        vendor: string,
+    }
+
+    variant storage-error {
+        not-saved(string),
+        not-deleted(string),
+        bad-query(string),
+        not-found(string),
+        sys-error(string),
+        bad-request(string)
+    }
+
+    resource storage-api {
+        constructor();
+        save: func(id:string, data:list<list<u8>>) -> result<_, storage-error>;
+        find: func(id: string) -> result<list<list<u8>>, storage-error>;
+        delete: func(id: string) -> result<_, storage-error>;
+        save-stream: func(%stream: list<u8>) -> result<s32, storage-error>;
+        find-stream: func(query: option<query-set>) -> result<list<u8>, storage-error>;
+        delete-stream: func(query: option<query-set>) -> result<s32, storage-error>;
+        fast-save: func(id:string, data: list<list<u8>>) -> result<_, storage-error>;
+        fast-find: func(query:option<query-set>) -> result<list<list<u8>>, storage-error>;
+        fast-delete: func(query:option<query-set>) -> result<s32, storage-error>;
+    }
+}
+*/

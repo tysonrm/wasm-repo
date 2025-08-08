@@ -1,0 +1,12 @@
+interface publisher {
+  publish: func(topic: string, message: string);
+}
+
+interface subscriber {
+  type topic = string;
+  resource subscription {
+    constructor();
+    subscribe: func() -> list<topic>;
+    handle-event: func(event: string, message: list<u8>);
+  }
+}

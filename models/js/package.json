@@ -1,0 +1,22 @@
+{
+  "name": "taho-model",
+  "version": "0.1.0",
+  "description": "Compile a taho model written in js to a wasm component.",
+  "module": "src/model.js",
+  "scripts": {
+    "bundle": "npx esbuild --bundle src/model.mjs --platform=node --outdir=dist",
+    "compile": "npx jco componentize src/model.mjs -w ../wit -o ../../target/wasm32-wasip1/release/taho_model_js.wasm"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@bytecodealliance/jco": "^1.9.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.2",
+    "webpack": "^5.99.6",
+    "@rspack/cli": "^1.3.5",
+    "@rspack/core": "^1.3.5",
+    "webpack-cli": "^6.0.1"
+  }
+}

@@ -1,0 +1,30 @@
+interface query {
+  use model-data.{primitive};
+
+  enum operators {
+    equals,
+    greater-than,
+    less-than
+  }
+
+  record operation {
+    operator: operators, 
+    operand1: primitive,
+    operand2: primitive,
+  }
+
+  record operation-set {
+    and: option<list<operation>>,
+    or: option<list<operation>>,
+    not: option<list<operation>>
+  }
+
+  type native-query = string;
+
+  variant query-set {
+    simple(string),
+    formal(operation),
+    formal-set(operation-set),
+    native(native-query)
+  }
+}

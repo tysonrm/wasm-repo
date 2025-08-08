@@ -1,0 +1,22 @@
+interface llm {
+    type key-value = list<tuple<string, list<u8>>>;
+    type res = result<list<u8>, llm-error>;
+
+    enum llm-error {
+        error
+    }
+
+    record class-spec {
+        classifications: list<string>,
+        prompt: string,
+    }
+
+    resource llm-api {
+      constructor();
+      prompt: func(text: list<u8>, context: option<key-value>) -> res;
+      prompt-audio: func(mp4: list<u8>, context: option<key-value>) -> res;
+      prompt-video: func(mp4: list<u8>, context: option<key-value>) -> res;
+      classify: func(spec: class-spec, context: option<key-value>) -> res;
+      structure-res: func(template: string, prompt: string, context: option<key-value>) -> res;
+   } 
+  }

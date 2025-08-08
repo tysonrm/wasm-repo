@@ -1,0 +1,10 @@
+
+
+interface inbound-adapter {
+  use model-data.{model-instance};
+
+  resource adapters {
+    invoke-adapter: func(port-name: string, data: list<list<u8>>) -> result<list<list<u8>>, string>;
+    invoke-streaming-adapter: func(port-name: string, %stream: option<list<u8>>) -> tuple<option<list<u8>>, option<string>>;
+  }
+}

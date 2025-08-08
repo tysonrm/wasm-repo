@@ -1,0 +1,15 @@
+interface crud {
+    type key-value = option<list<tuple<string, string>>>;
+
+    variant crud-error {
+        error(string)
+    }
+
+    resource crud-api {
+        constructor(config:key-value);
+        create: func(query:string, data: list<u8>) -> result<list<u8>, crud-error>;
+        read: func(query:string) -> result<list<u8>, crud-error>;
+        update: func(query:string, data:list<u8>) -> result<s32, crud-error>;
+        delete: func(query:string) -> result<s32, crud-error>;
+    }
+}

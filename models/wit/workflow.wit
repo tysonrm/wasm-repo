@@ -1,0 +1,90 @@
+interface workflow {
+  use model.{workflow-name, domain-name, model-name, port-name};
+  
+  record control-flow {
+    model-from: model-name,
+    model-to: model-name,
+    port: port-name,
+    horizontal-segment: s32,
+    vertical-segment: s32,
+    total-segments: s32
+  }
+
+  record workflow-spec {
+    name: workflow-name,
+    domain: domain-name,
+    source: string,
+    diagram: list<u8>,
+    enabled: bool,
+    control-flows: list<control-flow>
+  }
+
+  variant wferror {
+    parsing-exception(string),
+    invalid-control-flow(string),
+    invalid-diagram(string),
+    invalid-prompt(string),
+    invalid-media(string),
+    command-failure(string)
+  }
+
+  add-workflow: func(name:string,domain:string,flows:list<control-flow>) -> result<_ , wferror>;
+  add-workflow-from-sequence-diagram: func(name:string,domain:string,source:string) -> result<_ , wferror>;
+  add-workflow-from-state-machine: func(name:string,domain:string,source:string) -> result<_ , wferror>;
+  add-workflow-from-acyclic-graph: func(name:string,domain:string,source:string) -> result<_ , wferror>;
+  add-workflow-from-freeform-diagram: func(name:string,domain:string,source:string,llm:string) -> result<_ , wferror>;
+  add-workflow-from-chat-prompt:func(name:string,domain:string,source:string,llm:string) -> result<_ , wferror>;
+  add-workflow-from-audio-file:func(name:string,domain:string,source:string,llm:string) -> result<_ , wferror>;
+  add-workflow-from-video-file:func(name:string,domain:string,source:string,llm:string) -> result<_ , wferror>;
+  get-diagram-from-workflow:func(name:string,domain:string,source:string) -> result<_ , wferror>;
+}
+
+interface wfinstance {
+  use model.{workflow-name, port-event};
+  use workflow.{control-flow, wferror};
+
+  type date-time = string;
+  type milliseconds = s32;
+
+  enum states {
+    starting,
+    running,
+    paused,
+    undoing,
+    completed,
+    cancelled,
+  }
+
+  type to = states;
+  type frm = states;
+  type allowed-transitions = list<tuple<to, frm>>;
+
+  record wfinstance-state {
+    wfid: workflow-name,
+    uuid: string,
+    state: states,
+    started: date-time,
+    duration: milliseconds,
+    segment-count:s32,
+    horizontal-segment:s32,
+    vertical-segment:s32,
+    current-control-flow: control-flow,
+    history: list<port-event>
+  }
+
+  resource workflow-api {
+    constructor();
+    start: func() -> result<_, wferror>;
+    start-from: func(sequence: option<s32>, elapsed: option<milliseconds>) -> result<_, wferror>;
+    pause: func() -> result<control-flow, wferror>;
+    pause-at: func(sequence: option<s32>, elapsed: option<milliseconds>) -> result<control-flow, wferror>;
+    skip:func(sequence: option<s32>, elapsed: option<milliseconds>) -> result<control-flow, wferror>;
+    skip-to:func(sequence: option<s32>, elapsed: option<milliseconds>) -> result<control-flow, wferror>;
+    backout: func(to-sequence: option<s32>, to-elapsed: option<milliseconds>) -> result<_, wferror>;
+    backout-from: func(to-sequence: option<s32>, to-elapsed: option<milliseconds>) -> result<_, wferror>;
+    cancel: func() ->  result<_, wferror>;
+    replay:func(sequence: option<s32>, elapsed: option<milliseconds>) -> result<control-flow, wferror>;
+    replay-from:func(sequence: option<s32>, elapsed: option<milliseconds>) -> result<control-flow, wferror>;
+  }
+}
+
