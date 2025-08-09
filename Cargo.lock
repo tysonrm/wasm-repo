@@ -956,6 +956,24 @@ dependencies = [
 ]
 
 [[package]]
+name = "inventory"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "cargo-component-bindings",
+ "cargo-expand",
+ "derive",
+ "features",
+ "multiaddr",
+ "quote",
+ "serde",
+ "serde_json",
+ "taho-macro",
+ "thiserror 2.0.12",
+ "wit-bindgen-rt 0.34.0",
+]
+
+[[package]]
 name = "is_terminal_polyfill"
 version = "1.70.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1511,24 +1529,6 @@ dependencies = [
  "serde_json",
  "thiserror 1.0.69",
  "walkdir",
-]
-
-[[package]]
-name = "taho-inventory"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "cargo-component-bindings",
- "cargo-expand",
- "derive",
- "features",
- "multiaddr",
- "quote",
- "serde",
- "serde_json",
- "taho-macro",
- "thiserror 2.0.12",
- "wit-bindgen-rt 0.34.0",
 ]
 
 [[package]]

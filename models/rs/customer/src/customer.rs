@@ -97,7 +97,7 @@ impl GuestPorts for PortFunctions {
             "find".to_string(),
             Box::new(|mut data: port::PortData| {
                 println!("customer.find ****");
-                let mut customer = Customer::try_from(&data.data)?;
+                let mut customer = Customer::try_from(&data.data).unwrap_or_default();
                 println!("{customer:?}");
                 customer.last_name = "Smith".into();
                 data.wfstate = "CustomerFound".into();
