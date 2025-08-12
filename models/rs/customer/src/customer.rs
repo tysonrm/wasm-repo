@@ -105,6 +105,14 @@ impl GuestPorts for PortFunctions {
                 Ok(data)
             }) as PortFn,
         );
+        h.insert(
+            "port1".to_string(),
+            Box::new(|mut data: port::PortData| {
+                println!("port1 ****");
+                data.data = "port1".into();
+                Ok(data)
+            }) as PortFn,
+        );
         Self {
             functions: RefCell::new(h),
         }
