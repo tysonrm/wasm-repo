@@ -105,14 +105,14 @@ impl GuestPorts for PortFunctions {
                 Ok(data)
             }) as PortFn,
         );
-        // h.insert(
-        //     "port1".to_string(),
-        //     Box::new(|mut data: port::PortData| {
-        //         println!("port1 ****");
-        //         data.data = "port1".into();
-        //         Ok(data)
-        //     }) as PortFn,
-        // );
+        h.insert(
+            "port1".to_string(),
+            Box::new(|mut data: port::PortData| {
+                println!("port1 😜");
+                data.data = r#"<html><body><div class="container"><iframe width="750" height="500" src="https://app.surrealdb.com/mini?theme=auto&resultmode=combined" title="Surrealist Mini" frameborder="0" allowTransparency="true" referrerpolicy="strict-origin-when-cross-origin"></iframe></div> </body> </html>"#.as_bytes().to_vec();
+                Ok(data)
+            }) as PortFn,
+        );
         Self {
             functions: RefCell::new(h),
         }
