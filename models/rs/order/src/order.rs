@@ -320,6 +320,10 @@ impl GuestPorts for PortFunctions {
                 Ok(data)
             }) as PortFn,
         );
+        h.insert(
+            "port1".to_owned(),
+            Box::new(|data: PortData| Ok(data)) as PortFn,
+        );
 
         Self {
             functions: RefCell::new(h),
