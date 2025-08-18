@@ -6,7 +6,12 @@ edition = "2024"
 name = "taho-model"
 
 [workspace]
-members = ["models/rs/order", "models/rs/inventory", "models/rs/customer"]
+members = [
+    "models/rs/order",
+    "models/rs/inventory",
+    "models/rs/customer",
+    "models/rs/shipping",
+]
 resolver = "2"
 
 [profile.release]
