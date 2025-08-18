@@ -322,7 +322,11 @@ impl GuestPorts for PortFunctions {
         );
         h.insert(
             "port1".to_owned(),
-            Box::new(|data: PortData| Ok(data)) as PortFn,
+            Box::new(|mut data: PortData| {
+                data.data = "port1".as_bytes().to_vec();
+                data.wfid = "port1".to_string();
+                Ok(data)
+            }) as PortFn,
         );
 
         Self {
