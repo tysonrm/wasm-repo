@@ -232,7 +232,7 @@ impl model::Guest for Order {
         };
 
         Ok(ModelSpec {
-            name: "shipping".into(),
+            name: "ship".into(),
             domain: "order_up".into(),
             ports,
             relations: vec![],
