@@ -3,6 +3,1796 @@
 //   * runtime_path: "wit_bindgen_rt"
 #[rustfmt::skip]
 #[allow(dead_code, clippy::all)]
+pub mod taho {
+    pub mod models {
+        #[allow(dead_code, async_fn_in_trait, unused_imports, clippy::all)]
+        pub mod inbound {
+            #[used]
+            #[doc(hidden)]
+            static __FORCE_SECTION_REF: fn() = super::super::super::__link_custom_section_describing_imports;
+            use super::super::super::_rt;
+            #[derive(Clone)]
+            pub enum PortError {
+                Error(_rt::String),
+            }
+            impl ::core::fmt::Debug for PortError {
+                fn fmt(
+                    &self,
+                    f: &mut ::core::fmt::Formatter<'_>,
+                ) -> ::core::fmt::Result {
+                    match self {
+                        PortError::Error(e) => {
+                            f.debug_tuple("PortError::Error").field(e).finish()
+                        }
+                    }
+                }
+            }
+            impl ::core::fmt::Display for PortError {
+                fn fmt(
+                    &self,
+                    f: &mut ::core::fmt::Formatter<'_>,
+                ) -> ::core::fmt::Result {
+                    write!(f, "{:?}", self)
+                }
+            }
+            impl std::error::Error for PortError {}
+            #[derive(Clone)]
+            pub struct PortData {
+                pub data: _rt::Vec<u8>,
+                pub wfid: _rt::String,
+                pub wfstate: _rt::String,
+                pub wfhist: _rt::Vec<_rt::String>,
+            }
+            impl ::core::fmt::Debug for PortData {
+                fn fmt(
+                    &self,
+                    f: &mut ::core::fmt::Formatter<'_>,
+                ) -> ::core::fmt::Result {
+                    f.debug_struct("PortData")
+                        .field("data", &self.data)
+                        .field("wfid", &self.wfid)
+                        .field("wfstate", &self.wfstate)
+                        .field("wfhist", &self.wfhist)
+                        .finish()
+                }
+            }
+            #[allow(unused_unsafe, clippy::all)]
+            pub fn call_model_port(
+                model_name: &str,
+                port_name: &str,
+                data: &PortData,
+            ) -> Result<PortData, PortError> {
+                unsafe {
+                    #[cfg_attr(target_pointer_width = "64", repr(align(8)))]
+                    #[cfg_attr(target_pointer_width = "32", repr(align(4)))]
+                    struct RetArea(
+                        [::core::mem::MaybeUninit<
+                            u8,
+                        >; 9 * ::core::mem::size_of::<*const u8>()],
+                    );
+                    let mut ret_area = RetArea(
+                        [::core::mem::MaybeUninit::uninit(); 9
+                            * ::core::mem::size_of::<*const u8>()],
+                    );
+                    let vec0 = model_name;
+                    let ptr0 = vec0.as_ptr().cast::<u8>();
+                    let len0 = vec0.len();
+                    let vec1 = port_name;
+                    let ptr1 = vec1.as_ptr().cast::<u8>();
+                    let len1 = vec1.len();
+                    let PortData {
+                        data: data2,
+                        wfid: wfid2,
+                        wfstate: wfstate2,
+                        wfhist: wfhist2,
+                    } = data;
+                    let vec3 = data2;
+                    let ptr3 = vec3.as_ptr().cast::<u8>();
+                    let len3 = vec3.len();
+                    let vec4 = wfid2;
+                    let ptr4 = vec4.as_ptr().cast::<u8>();
+                    let len4 = vec4.len();
+                    let vec5 = wfstate2;
+                    let ptr5 = vec5.as_ptr().cast::<u8>();
+                    let len5 = vec5.len();
+                    let vec7 = wfhist2;
+                    let len7 = vec7.len();
+                    let layout7 = _rt::alloc::Layout::from_size_align_unchecked(
+                        vec7.len() * (2 * ::core::mem::size_of::<*const u8>()),
+                        ::core::mem::size_of::<*const u8>(),
+                    );
+                    let result7 = if layout7.size() != 0 {
+                        let ptr = _rt::alloc::alloc(layout7).cast::<u8>();
+                        if ptr.is_null() {
+                            _rt::alloc::handle_alloc_error(layout7);
+                        }
+                        ptr
+                    } else {
+                        ::core::ptr::null_mut()
+                    };
+                    for (i, e) in vec7.into_iter().enumerate() {
+                        let base = result7
+                            .add(i * (2 * ::core::mem::size_of::<*const u8>()));
+                        {
+                            let vec6 = e;
+                            let ptr6 = vec6.as_ptr().cast::<u8>();
+                            let len6 = vec6.len();
+                            *base
+                                .add(::core::mem::size_of::<*const u8>())
+                                .cast::<usize>() = len6;
+                            *base.add(0).cast::<*mut u8>() = ptr6.cast_mut();
+                        }
+                    }
+                    let ptr8 = ret_area.0.as_mut_ptr().cast::<u8>();
+                    #[cfg(target_arch = "wasm32")]
+                    #[link(wasm_import_module = "taho:models/inbound")]
+                    unsafe extern "C" {
+                        #[link_name = "call-model-port"]
+                        fn wit_import9(
+                            _: *mut u8,
+                            _: usize,
+                            _: *mut u8,
+                            _: usize,
+                            _: *mut u8,
+                            _: usize,
+                            _: *mut u8,
+                            _: usize,
+                            _: *mut u8,
+                            _: usize,
+                            _: *mut u8,
+                            _: usize,
+                            _: *mut u8,
+                        );
+                    }
+                    #[cfg(not(target_arch = "wasm32"))]
+                    unsafe extern "C" fn wit_import9(
+                        _: *mut u8,
+                        _: usize,
+                        _: *mut u8,
+                        _: usize,
+                        _: *mut u8,
+                        _: usize,
+                        _: *mut u8,
+                        _: usize,
+                        _: *mut u8,
+                        _: usize,
+                        _: *mut u8,
+                        _: usize,
+                        _: *mut u8,
+                    ) {
+                        unreachable!()
+                    }
+                    unsafe {
+                        wit_import9(
+                            ptr0.cast_mut(),
+                            len0,
+                            ptr1.cast_mut(),
+                            len1,
+                            ptr3.cast_mut(),
+                            len3,
+                            ptr4.cast_mut(),
+                            len4,
+                            ptr5.cast_mut(),
+                            len5,
+                            result7,
+                            len7,
+                            ptr8,
+                        )
+                    };
+                    let l10 = i32::from(*ptr8.add(0).cast::<u8>());
+                    let result31 = match l10 {
+                        0 => {
+                            let e = {
+                                let l11 = *ptr8
+                                    .add(::core::mem::size_of::<*const u8>())
+                                    .cast::<*mut u8>();
+                                let l12 = *ptr8
+                                    .add(2 * ::core::mem::size_of::<*const u8>())
+                                    .cast::<usize>();
+                                let len13 = l12;
+                                let l14 = *ptr8
+                                    .add(3 * ::core::mem::size_of::<*const u8>())
+                                    .cast::<*mut u8>();
+                                let l15 = *ptr8
+                                    .add(4 * ::core::mem::size_of::<*const u8>())
+                                    .cast::<usize>();
+                                let len16 = l15;
+                                let bytes16 = _rt::Vec::from_raw_parts(
+                                    l14.cast(),
+                                    len16,
+                                    len16,
+                                );
+                                let l17 = *ptr8
+                                    .add(5 * ::core::mem::size_of::<*const u8>())
+                                    .cast::<*mut u8>();
+                                let l18 = *ptr8
+                                    .add(6 * ::core::mem::size_of::<*const u8>())
+                                    .cast::<usize>();
+                                let len19 = l18;
+                                let bytes19 = _rt::Vec::from_raw_parts(
+                                    l17.cast(),
+                                    len19,
+                                    len19,
+                                );
+                                let l20 = *ptr8
+                                    .add(7 * ::core::mem::size_of::<*const u8>())
+                                    .cast::<*mut u8>();
+                                let l21 = *ptr8
+                                    .add(8 * ::core::mem::size_of::<*const u8>())
+                                    .cast::<usize>();
+                                let base25 = l20;
+                                let len25 = l21;
+                                let mut result25 = _rt::Vec::with_capacity(len25);
+                                for i in 0..len25 {
+                                    let base = base25
+                                        .add(i * (2 * ::core::mem::size_of::<*const u8>()));
+                                    let e25 = {
+                                        let l22 = *base.add(0).cast::<*mut u8>();
+                                        let l23 = *base
+                                            .add(::core::mem::size_of::<*const u8>())
+                                            .cast::<usize>();
+                                        let len24 = l23;
+                                        let bytes24 = _rt::Vec::from_raw_parts(
+                                            l22.cast(),
+                                            len24,
+                                            len24,
+                                        );
+                                        _rt::string_lift(bytes24)
+                                    };
+                                    result25.push(e25);
+                                }
+                                _rt::cabi_dealloc(
+                                    base25,
+                                    len25 * (2 * ::core::mem::size_of::<*const u8>()),
+                                    ::core::mem::size_of::<*const u8>(),
+                                );
+                                PortData {
+                                    data: _rt::Vec::from_raw_parts(l11.cast(), len13, len13),
+                                    wfid: _rt::string_lift(bytes16),
+                                    wfstate: _rt::string_lift(bytes19),
+                                    wfhist: result25,
+                                }
+                            };
+                            Ok(e)
+                        }
+                        1 => {
+                            let e = {
+                                let l26 = i32::from(
+                                    *ptr8.add(::core::mem::size_of::<*const u8>()).cast::<u8>(),
+                                );
+                                let v30 = match l26 {
+                                    n => {
+                                        debug_assert_eq!(n, 0, "invalid enum discriminant");
+                                        let e30 = {
+                                            let l27 = *ptr8
+                                                .add(2 * ::core::mem::size_of::<*const u8>())
+                                                .cast::<*mut u8>();
+                                            let l28 = *ptr8
+                                                .add(3 * ::core::mem::size_of::<*const u8>())
+                                                .cast::<usize>();
+                                            let len29 = l28;
+                                            let bytes29 = _rt::Vec::from_raw_parts(
+                                                l27.cast(),
+                                                len29,
+                                                len29,
+                                            );
+                                            _rt::string_lift(bytes29)
+                                        };
+                                        PortError::Error(e30)
+                                    }
+                                };
+                                v30
+                            };
+                            Err(e)
+                        }
+                        _ => _rt::invalid_enum_discriminant(),
+                    };
+                    if layout7.size() != 0 {
+                        _rt::alloc::dealloc(result7.cast(), layout7);
+                    }
+                    result31
+                }
+            }
+        }
+        #[allow(dead_code, async_fn_in_trait, unused_imports, clippy::all)]
+        pub mod outbound {
+            #[used]
+            #[doc(hidden)]
+            static __FORCE_SECTION_REF: fn() = super::super::super::__link_custom_section_describing_imports;
+            use super::super::super::_rt;
+            #[derive(Clone)]
+            pub enum AdapterError {
+                Error(_rt::String),
+            }
+            impl ::core::fmt::Debug for AdapterError {
+                fn fmt(
+                    &self,
+                    f: &mut ::core::fmt::Formatter<'_>,
+                ) -> ::core::fmt::Result {
+                    match self {
+                        AdapterError::Error(e) => {
+                            f.debug_tuple("AdapterError::Error").field(e).finish()
+                        }
+                    }
+                }
+            }
+            impl ::core::fmt::Display for AdapterError {
+                fn fmt(
+                    &self,
+                    f: &mut ::core::fmt::Formatter<'_>,
+                ) -> ::core::fmt::Result {
+                    write!(f, "{:?}", self)
+                }
+            }
+            impl std::error::Error for AdapterError {}
+            #[allow(unused_unsafe, clippy::all)]
+            pub fn call_adapter_component(
+                adapter_name: &str,
+                data: &[u8],
+            ) -> Result<_rt::Vec<u8>, AdapterError> {
+                unsafe {
+                    #[cfg_attr(target_pointer_width = "64", repr(align(8)))]
+                    #[cfg_attr(target_pointer_width = "32", repr(align(4)))]
+                    struct RetArea(
+                        [::core::mem::MaybeUninit<
+                            u8,
+                        >; 4 * ::core::mem::size_of::<*const u8>()],
+                    );
+                    let mut ret_area = RetArea(
+                        [::core::mem::MaybeUninit::uninit(); 4
+                            * ::core::mem::size_of::<*const u8>()],
+                    );
+                    let vec0 = adapter_name;
+                    let ptr0 = vec0.as_ptr().cast::<u8>();
+                    let len0 = vec0.len();
+                    let vec1 = data;
+                    let ptr1 = vec1.as_ptr().cast::<u8>();
+                    let len1 = vec1.len();
+                    let ptr2 = ret_area.0.as_mut_ptr().cast::<u8>();
+                    #[cfg(target_arch = "wasm32")]
+                    #[link(wasm_import_module = "taho:models/outbound")]
+                    unsafe extern "C" {
+                        #[link_name = "call-adapter-component"]
+                        fn wit_import3(
+                            _: *mut u8,
+                            _: usize,
+                            _: *mut u8,
+                            _: usize,
+                            _: *mut u8,
+                        );
+                    }
+                    #[cfg(not(target_arch = "wasm32"))]
+                    unsafe extern "C" fn wit_import3(
+                        _: *mut u8,
+                        _: usize,
+                        _: *mut u8,
+                        _: usize,
+                        _: *mut u8,
+                    ) {
+                        unreachable!()
+                    }
+                    unsafe {
+                        wit_import3(ptr0.cast_mut(), len0, ptr1.cast_mut(), len1, ptr2)
+                    };
+                    let l4 = i32::from(*ptr2.add(0).cast::<u8>());
+                    let result13 = match l4 {
+                        0 => {
+                            let e = {
+                                let l5 = *ptr2
+                                    .add(::core::mem::size_of::<*const u8>())
+                                    .cast::<*mut u8>();
+                                let l6 = *ptr2
+                                    .add(2 * ::core::mem::size_of::<*const u8>())
+                                    .cast::<usize>();
+                                let len7 = l6;
+                                _rt::Vec::from_raw_parts(l5.cast(), len7, len7)
+                            };
+                            Ok(e)
+                        }
+                        1 => {
+                            let e = {
+                                let l8 = i32::from(
+                                    *ptr2.add(::core::mem::size_of::<*const u8>()).cast::<u8>(),
+                                );
+                                let v12 = match l8 {
+                                    n => {
+                                        debug_assert_eq!(n, 0, "invalid enum discriminant");
+                                        let e12 = {
+                                            let l9 = *ptr2
+                                                .add(2 * ::core::mem::size_of::<*const u8>())
+                                                .cast::<*mut u8>();
+                                            let l10 = *ptr2
+                                                .add(3 * ::core::mem::size_of::<*const u8>())
+                                                .cast::<usize>();
+                                            let len11 = l10;
+                                            let bytes11 = _rt::Vec::from_raw_parts(
+                                                l9.cast(),
+                                                len11,
+                                                len11,
+                                            );
+                                            _rt::string_lift(bytes11)
+                                        };
+                                        AdapterError::Error(e12)
+                                    }
+                                };
+                                v12
+                            };
+                            Err(e)
+                        }
+                        _ => _rt::invalid_enum_discriminant(),
+                    };
+                    result13
+                }
+            }
+        }
+        #[allow(dead_code, async_fn_in_trait, unused_imports, clippy::all)]
+        pub mod datasource {
+            #[used]
+            #[doc(hidden)]
+            static __FORCE_SECTION_REF: fn() = super::super::super::__link_custom_section_describing_imports;
+            use super::super::super::_rt;
+            pub type KeyValue = _rt::Vec<(_rt::String, _rt::String)>;
+            #[derive(Clone)]
+            pub enum Error {
+                Error(_rt::String),
+            }
+            impl ::core::fmt::Debug for Error {
+                fn fmt(
+                    &self,
+                    f: &mut ::core::fmt::Formatter<'_>,
+                ) -> ::core::fmt::Result {
+                    match self {
+                        Error::Error(e) => {
+                            f.debug_tuple("Error::Error").field(e).finish()
+                        }
+                    }
+                }
+            }
+            impl ::core::fmt::Display for Error {
+                fn fmt(
+                    &self,
+                    f: &mut ::core::fmt::Formatter<'_>,
+                ) -> ::core::fmt::Result {
+                    write!(f, "{:?}", self)
+                }
+            }
+            impl std::error::Error for Error {}
+            #[derive(Debug)]
+            #[repr(transparent)]
+            pub struct StorageApi {
+                handle: _rt::Resource<StorageApi>,
+            }
+            impl StorageApi {
+                #[doc(hidden)]
+                pub unsafe fn from_handle(handle: u32) -> Self {
+                    Self {
+                        handle: unsafe { _rt::Resource::from_handle(handle) },
+                    }
+                }
+                #[doc(hidden)]
+                pub fn take_handle(&self) -> u32 {
+                    _rt::Resource::take_handle(&self.handle)
+                }
+                #[doc(hidden)]
+                pub fn handle(&self) -> u32 {
+                    _rt::Resource::handle(&self.handle)
+                }
+            }
+            unsafe impl _rt::WasmResource for StorageApi {
+                #[inline]
+                unsafe fn drop(_handle: u32) {
+                    #[cfg(not(target_arch = "wasm32"))]
+                    unreachable!();
+                    #[cfg(target_arch = "wasm32")]
+                    {
+                        #[link(wasm_import_module = "taho:models/datasource")]
+                        unsafe extern "C" {
+                            #[link_name = "[resource-drop]storage-api"]
+                            fn drop(_: u32);
+                        }
+                        unsafe { drop(_handle) };
+                    }
+                }
+            }
+            impl StorageApi {
+                #[allow(unused_unsafe, clippy::all)]
+                pub fn new(config: Option<&[(_rt::String, _rt::String)]>) -> Self {
+                    unsafe {
+                        let mut cleanup_list = _rt::Vec::new();
+                        let (result4_0, result4_1, result4_2) = match config {
+                            Some(e) => {
+                                let vec3 = e;
+                                let len3 = vec3.len();
+                                let layout3 = _rt::alloc::Layout::from_size_align_unchecked(
+                                    vec3.len() * (4 * ::core::mem::size_of::<*const u8>()),
+                                    ::core::mem::size_of::<*const u8>(),
+                                );
+                                let result3 = if layout3.size() != 0 {
+                                    let ptr = _rt::alloc::alloc(layout3).cast::<u8>();
+                                    if ptr.is_null() {
+                                        _rt::alloc::handle_alloc_error(layout3);
+                                    }
+                                    ptr
+                                } else {
+                                    ::core::ptr::null_mut()
+                                };
+                                for (i, e) in vec3.into_iter().enumerate() {
+                                    let base = result3
+                                        .add(i * (4 * ::core::mem::size_of::<*const u8>()));
+                                    {
+                                        let (t0_0, t0_1) = e;
+                                        let vec1 = t0_0;
+                                        let ptr1 = vec1.as_ptr().cast::<u8>();
+                                        let len1 = vec1.len();
+                                        *base
+                                            .add(::core::mem::size_of::<*const u8>())
+                                            .cast::<usize>() = len1;
+                                        *base.add(0).cast::<*mut u8>() = ptr1.cast_mut();
+                                        let vec2 = t0_1;
+                                        let ptr2 = vec2.as_ptr().cast::<u8>();
+                                        let len2 = vec2.len();
+                                        *base
+                                            .add(3 * ::core::mem::size_of::<*const u8>())
+                                            .cast::<usize>() = len2;
+                                        *base
+                                            .add(2 * ::core::mem::size_of::<*const u8>())
+                                            .cast::<*mut u8>() = ptr2.cast_mut();
+                                    }
+                                }
+                                cleanup_list.extend_from_slice(&[(result3, layout3)]);
+                                (1i32, result3, len3)
+                            }
+                            None => (0i32, ::core::ptr::null_mut(), 0usize),
+                        };
+                        #[cfg(target_arch = "wasm32")]
+                        #[link(wasm_import_module = "taho:models/datasource")]
+                        unsafe extern "C" {
+                            #[link_name = "[constructor]storage-api"]
+                            fn wit_import5(_: i32, _: *mut u8, _: usize) -> i32;
+                        }
+                        #[cfg(not(target_arch = "wasm32"))]
+                        unsafe extern "C" fn wit_import5(
+                            _: i32,
+                            _: *mut u8,
+                            _: usize,
+                        ) -> i32 {
+                            unreachable!()
+                        }
+                        let ret = unsafe {
+                            wit_import5(result4_0, result4_1, result4_2)
+                        };
+                        for (ptr, layout) in cleanup_list {
+                            if layout.size() != 0 {
+                                _rt::alloc::dealloc(ptr.cast(), layout);
+                            }
+                        }
+                        unsafe { StorageApi::from_handle(ret as u32) }
+                    }
+                }
+            }
+            impl StorageApi {
+                #[allow(unused_unsafe, clippy::all)]
+                pub fn save(
+                    &self,
+                    query: &str,
+                    data: &[u8],
+                ) -> Result<_rt::String, Error> {
+                    unsafe {
+                        #[cfg_attr(target_pointer_width = "64", repr(align(8)))]
+                        #[cfg_attr(target_pointer_width = "32", repr(align(4)))]
+                        struct RetArea(
+                            [::core::mem::MaybeUninit<
+                                u8,
+                            >; 4 * ::core::mem::size_of::<*const u8>()],
+                        );
+                        let mut ret_area = RetArea(
+                            [::core::mem::MaybeUninit::uninit(); 4
+                                * ::core::mem::size_of::<*const u8>()],
+                        );
+                        let vec0 = query;
+                        let ptr0 = vec0.as_ptr().cast::<u8>();
+                        let len0 = vec0.len();
+                        let vec1 = data;
+                        let ptr1 = vec1.as_ptr().cast::<u8>();
+                        let len1 = vec1.len();
+                        let ptr2 = ret_area.0.as_mut_ptr().cast::<u8>();
+                        #[cfg(target_arch = "wasm32")]
+                        #[link(wasm_import_module = "taho:models/datasource")]
+                        unsafe extern "C" {
+                            #[link_name = "[method]storage-api.save"]
+                            fn wit_import3(
+                                _: i32,
+                                _: *mut u8,
+                                _: usize,
+                                _: *mut u8,
+                                _: usize,
+                                _: *mut u8,
+                            );
+                        }
+                        #[cfg(not(target_arch = "wasm32"))]
+                        unsafe extern "C" fn wit_import3(
+                            _: i32,
+                            _: *mut u8,
+                            _: usize,
+                            _: *mut u8,
+                            _: usize,
+                            _: *mut u8,
+                        ) {
+                            unreachable!()
+                        }
+                        unsafe {
+                            wit_import3(
+                                (self).handle() as i32,
+                                ptr0.cast_mut(),
+                                len0,
+                                ptr1.cast_mut(),
+                                len1,
+                                ptr2,
+                            )
+                        };
+                        let l4 = i32::from(*ptr2.add(0).cast::<u8>());
+                        let result13 = match l4 {
+                            0 => {
+                                let e = {
+                                    let l5 = *ptr2
+                                        .add(::core::mem::size_of::<*const u8>())
+                                        .cast::<*mut u8>();
+                                    let l6 = *ptr2
+                                        .add(2 * ::core::mem::size_of::<*const u8>())
+                                        .cast::<usize>();
+                                    let len7 = l6;
+                                    let bytes7 = _rt::Vec::from_raw_parts(
+                                        l5.cast(),
+                                        len7,
+                                        len7,
+                                    );
+                                    _rt::string_lift(bytes7)
+                                };
+                                Ok(e)
+                            }
+                            1 => {
+                                let e = {
+                                    let l8 = i32::from(
+                                        *ptr2.add(::core::mem::size_of::<*const u8>()).cast::<u8>(),
+                                    );
+                                    let v12 = match l8 {
+                                        n => {
+                                            debug_assert_eq!(n, 0, "invalid enum discriminant");
+                                            let e12 = {
+                                                let l9 = *ptr2
+                                                    .add(2 * ::core::mem::size_of::<*const u8>())
+                                                    .cast::<*mut u8>();
+                                                let l10 = *ptr2
+                                                    .add(3 * ::core::mem::size_of::<*const u8>())
+                                                    .cast::<usize>();
+                                                let len11 = l10;
+                                                let bytes11 = _rt::Vec::from_raw_parts(
+                                                    l9.cast(),
+                                                    len11,
+                                                    len11,
+                                                );
+                                                _rt::string_lift(bytes11)
+                                            };
+                                            Error::Error(e12)
+                                        }
+                                    };
+                                    v12
+                                };
+                                Err(e)
+                            }
+                            _ => _rt::invalid_enum_discriminant(),
+                        };
+                        result13
+                    }
+                }
+            }
+            impl StorageApi {
+                #[allow(unused_unsafe, clippy::all)]
+                pub fn find(&self, query: &str) -> Result<_rt::Vec<u8>, Error> {
+                    unsafe {
+                        #[cfg_attr(target_pointer_width = "64", repr(align(8)))]
+                        #[cfg_attr(target_pointer_width = "32", repr(align(4)))]
+                        struct RetArea(
+                            [::core::mem::MaybeUninit<
+                                u8,
+                            >; 4 * ::core::mem::size_of::<*const u8>()],
+                        );
+                        let mut ret_area = RetArea(
+                            [::core::mem::MaybeUninit::uninit(); 4
+                                * ::core::mem::size_of::<*const u8>()],
+                        );
+                        let vec0 = query;
+                        let ptr0 = vec0.as_ptr().cast::<u8>();
+                        let len0 = vec0.len();
+                        let ptr1 = ret_area.0.as_mut_ptr().cast::<u8>();
+                        #[cfg(target_arch = "wasm32")]
+                        #[link(wasm_import_module = "taho:models/datasource")]
+                        unsafe extern "C" {
+                            #[link_name = "[method]storage-api.find"]
+                            fn wit_import2(_: i32, _: *mut u8, _: usize, _: *mut u8);
+                        }
+                        #[cfg(not(target_arch = "wasm32"))]
+                        unsafe extern "C" fn wit_import2(
+                            _: i32,
+                            _: *mut u8,
+                            _: usize,
+                            _: *mut u8,
+                        ) {
+                            unreachable!()
+                        }
+                        unsafe {
+                            wit_import2(
+                                (self).handle() as i32,
+                                ptr0.cast_mut(),
+                                len0,
+                                ptr1,
+                            )
+                        };
+                        let l3 = i32::from(*ptr1.add(0).cast::<u8>());
+                        let result12 = match l3 {
+                            0 => {
+                                let e = {
+                                    let l4 = *ptr1
+                                        .add(::core::mem::size_of::<*const u8>())
+                                        .cast::<*mut u8>();
+                                    let l5 = *ptr1
+                                        .add(2 * ::core::mem::size_of::<*const u8>())
+                                        .cast::<usize>();
+                                    let len6 = l5;
+                                    _rt::Vec::from_raw_parts(l4.cast(), len6, len6)
+                                };
+                                Ok(e)
+                            }
+                            1 => {
+                                let e = {
+                                    let l7 = i32::from(
+                                        *ptr1.add(::core::mem::size_of::<*const u8>()).cast::<u8>(),
+                                    );
+                                    let v11 = match l7 {
+                                        n => {
+                                            debug_assert_eq!(n, 0, "invalid enum discriminant");
+                                            let e11 = {
+                                                let l8 = *ptr1
+                                                    .add(2 * ::core::mem::size_of::<*const u8>())
+                                                    .cast::<*mut u8>();
+                                                let l9 = *ptr1
+                                                    .add(3 * ::core::mem::size_of::<*const u8>())
+                                                    .cast::<usize>();
+                                                let len10 = l9;
+                                                let bytes10 = _rt::Vec::from_raw_parts(
+                                                    l8.cast(),
+                                                    len10,
+                                                    len10,
+                                                );
+                                                _rt::string_lift(bytes10)
+                                            };
+                                            Error::Error(e11)
+                                        }
+                                    };
+                                    v11
+                                };
+                                Err(e)
+                            }
+                            _ => _rt::invalid_enum_discriminant(),
+                        };
+                        result12
+                    }
+                }
+            }
+            impl StorageApi {
+                #[allow(unused_unsafe, clippy::all)]
+                pub fn delete(&self, query: &str) -> Result<i32, Error> {
+                    unsafe {
+                        #[cfg_attr(target_pointer_width = "64", repr(align(8)))]
+                        #[cfg_attr(target_pointer_width = "32", repr(align(4)))]
+                        struct RetArea(
+                            [::core::mem::MaybeUninit<
+                                u8,
+                            >; 4 * ::core::mem::size_of::<*const u8>()],
+                        );
+                        let mut ret_area = RetArea(
+                            [::core::mem::MaybeUninit::uninit(); 4
+                                * ::core::mem::size_of::<*const u8>()],
+                        );
+                        let vec0 = query;
+                        let ptr0 = vec0.as_ptr().cast::<u8>();
+                        let len0 = vec0.len();
+                        let ptr1 = ret_area.0.as_mut_ptr().cast::<u8>();
+                        #[cfg(target_arch = "wasm32")]
+                        #[link(wasm_import_module = "taho:models/datasource")]
+                        unsafe extern "C" {
+                            #[link_name = "[method]storage-api.delete"]
+                            fn wit_import2(_: i32, _: *mut u8, _: usize, _: *mut u8);
+                        }
+                        #[cfg(not(target_arch = "wasm32"))]
+                        unsafe extern "C" fn wit_import2(
+                            _: i32,
+                            _: *mut u8,
+                            _: usize,
+                            _: *mut u8,
+                        ) {
+                            unreachable!()
+                        }
+                        unsafe {
+                            wit_import2(
+                                (self).handle() as i32,
+                                ptr0.cast_mut(),
+                                len0,
+                                ptr1,
+                            )
+                        };
+                        let l3 = i32::from(*ptr1.add(0).cast::<u8>());
+                        let result10 = match l3 {
+                            0 => {
+                                let e = {
+                                    let l4 = *ptr1
+                                        .add(::core::mem::size_of::<*const u8>())
+                                        .cast::<i32>();
+                                    l4
+                                };
+                                Ok(e)
+                            }
+                            1 => {
+                                let e = {
+                                    let l5 = i32::from(
+                                        *ptr1.add(::core::mem::size_of::<*const u8>()).cast::<u8>(),
+                                    );
+                                    let v9 = match l5 {
+                                        n => {
+                                            debug_assert_eq!(n, 0, "invalid enum discriminant");
+                                            let e9 = {
+                                                let l6 = *ptr1
+                                                    .add(2 * ::core::mem::size_of::<*const u8>())
+                                                    .cast::<*mut u8>();
+                                                let l7 = *ptr1
+                                                    .add(3 * ::core::mem::size_of::<*const u8>())
+                                                    .cast::<usize>();
+                                                let len8 = l7;
+                                                let bytes8 = _rt::Vec::from_raw_parts(
+                                                    l6.cast(),
+                                                    len8,
+                                                    len8,
+                                                );
+                                                _rt::string_lift(bytes8)
+                                            };
+                                            Error::Error(e9)
+                                        }
+                                    };
+                                    v9
+                                };
+                                Err(e)
+                            }
+                            _ => _rt::invalid_enum_discriminant(),
+                        };
+                        result10
+                    }
+                }
+            }
+        }
+        #[allow(dead_code, async_fn_in_trait, unused_imports, clippy::all)]
+        pub mod publisher {
+            #[used]
+            #[doc(hidden)]
+            static __FORCE_SECTION_REF: fn() = super::super::super::__link_custom_section_describing_imports;
+            #[allow(unused_unsafe, clippy::all)]
+            pub fn publish(topic: &str, message: &str) -> () {
+                unsafe {
+                    let vec0 = topic;
+                    let ptr0 = vec0.as_ptr().cast::<u8>();
+                    let len0 = vec0.len();
+                    let vec1 = message;
+                    let ptr1 = vec1.as_ptr().cast::<u8>();
+                    let len1 = vec1.len();
+                    #[cfg(target_arch = "wasm32")]
+                    #[link(wasm_import_module = "taho:models/publisher")]
+                    unsafe extern "C" {
+                        #[link_name = "publish"]
+                        fn wit_import2(_: *mut u8, _: usize, _: *mut u8, _: usize);
+                    }
+                    #[cfg(not(target_arch = "wasm32"))]
+                    unsafe extern "C" fn wit_import2(
+                        _: *mut u8,
+                        _: usize,
+                        _: *mut u8,
+                        _: usize,
+                    ) {
+                        unreachable!()
+                    }
+                    unsafe { wit_import2(ptr0.cast_mut(), len0, ptr1.cast_mut(), len1) };
+                }
+            }
+        }
+        #[allow(dead_code, async_fn_in_trait, unused_imports, clippy::all)]
+        pub mod llm {
+            #[used]
+            #[doc(hidden)]
+            static __FORCE_SECTION_REF: fn() = super::super::super::__link_custom_section_describing_imports;
+            use super::super::super::_rt;
+            pub type KeyValue = _rt::Vec<(_rt::String, _rt::Vec<u8>)>;
+            #[repr(u8)]
+            #[derive(Clone, Copy, Eq, Ord, PartialEq, PartialOrd)]
+            pub enum LlmError {
+                Error,
+            }
+            impl LlmError {
+                pub fn name(&self) -> &'static str {
+                    match self {
+                        LlmError::Error => "error",
+                    }
+                }
+                pub fn message(&self) -> &'static str {
+                    match self {
+                        LlmError::Error => "",
+                    }
+                }
+            }
+            impl ::core::fmt::Debug for LlmError {
+                fn fmt(
+                    &self,
+                    f: &mut ::core::fmt::Formatter<'_>,
+                ) -> ::core::fmt::Result {
+                    f.debug_struct("LlmError")
+                        .field("code", &(*self as i32))
+                        .field("name", &self.name())
+                        .field("message", &self.message())
+                        .finish()
+                }
+            }
+            impl ::core::fmt::Display for LlmError {
+                fn fmt(
+                    &self,
+                    f: &mut ::core::fmt::Formatter<'_>,
+                ) -> ::core::fmt::Result {
+                    write!(f, "{} (error {})", self.name(), * self as i32)
+                }
+            }
+            impl std::error::Error for LlmError {}
+            impl LlmError {
+                #[doc(hidden)]
+                pub unsafe fn _lift(val: u8) -> LlmError {
+                    if !cfg!(debug_assertions) {
+                        return ::core::mem::transmute(val);
+                    }
+                    match val {
+                        0 => LlmError::Error,
+                        _ => panic!("invalid enum discriminant"),
+                    }
+                }
+            }
+            pub type Res = Result<_rt::Vec<u8>, LlmError>;
+            #[derive(Clone)]
+            pub struct ClassSpec {
+                pub classifications: _rt::Vec<_rt::String>,
+                pub prompt: _rt::String,
+            }
+            impl ::core::fmt::Debug for ClassSpec {
+                fn fmt(
+                    &self,
+                    f: &mut ::core::fmt::Formatter<'_>,
+                ) -> ::core::fmt::Result {
+                    f.debug_struct("ClassSpec")
+                        .field("classifications", &self.classifications)
+                        .field("prompt", &self.prompt)
+                        .finish()
+                }
+            }
+            #[derive(Debug)]
+            #[repr(transparent)]
+            pub struct LlmApi {
+                handle: _rt::Resource<LlmApi>,
+            }
+            impl LlmApi {
+                #[doc(hidden)]
+                pub unsafe fn from_handle(handle: u32) -> Self {
+                    Self {
+                        handle: unsafe { _rt::Resource::from_handle(handle) },
+                    }
+                }
+                #[doc(hidden)]
+                pub fn take_handle(&self) -> u32 {
+                    _rt::Resource::take_handle(&self.handle)
+                }
+                #[doc(hidden)]
+                pub fn handle(&self) -> u32 {
+                    _rt::Resource::handle(&self.handle)
+                }
+            }
+            unsafe impl _rt::WasmResource for LlmApi {
+                #[inline]
+                unsafe fn drop(_handle: u32) {
+                    #[cfg(not(target_arch = "wasm32"))]
+                    unreachable!();
+                    #[cfg(target_arch = "wasm32")]
+                    {
+                        #[link(wasm_import_module = "taho:models/llm")]
+                        unsafe extern "C" {
+                            #[link_name = "[resource-drop]llm-api"]
+                            fn drop(_: u32);
+                        }
+                        unsafe { drop(_handle) };
+                    }
+                }
+            }
+            impl LlmApi {
+                #[allow(unused_unsafe, clippy::all)]
+                pub fn new() -> Self {
+                    unsafe {
+                        #[cfg(target_arch = "wasm32")]
+                        #[link(wasm_import_module = "taho:models/llm")]
+                        unsafe extern "C" {
+                            #[link_name = "[constructor]llm-api"]
+                            fn wit_import0() -> i32;
+                        }
+                        #[cfg(not(target_arch = "wasm32"))]
+                        unsafe extern "C" fn wit_import0() -> i32 {
+                            unreachable!()
+                        }
+                        let ret = unsafe { wit_import0() };
+                        unsafe { LlmApi::from_handle(ret as u32) }
+                    }
+                }
+            }
+            impl LlmApi {
+                #[allow(unused_unsafe, clippy::all)]
+                pub fn prompt(
+                    &self,
+                    text: &[u8],
+                    context: Option<&[(_rt::String, _rt::Vec<u8>)]>,
+                ) -> Res {
+                    unsafe {
+                        let mut cleanup_list = _rt::Vec::new();
+                        #[cfg_attr(target_pointer_width = "64", repr(align(8)))]
+                        #[cfg_attr(target_pointer_width = "32", repr(align(4)))]
+                        struct RetArea(
+                            [::core::mem::MaybeUninit<
+                                u8,
+                            >; 3 * ::core::mem::size_of::<*const u8>()],
+                        );
+                        let mut ret_area = RetArea(
+                            [::core::mem::MaybeUninit::uninit(); 3
+                                * ::core::mem::size_of::<*const u8>()],
+                        );
+                        let vec0 = text;
+                        let ptr0 = vec0.as_ptr().cast::<u8>();
+                        let len0 = vec0.len();
+                        let (result5_0, result5_1, result5_2) = match context {
+                            Some(e) => {
+                                let vec4 = e;
+                                let len4 = vec4.len();
+                                let layout4 = _rt::alloc::Layout::from_size_align_unchecked(
+                                    vec4.len() * (4 * ::core::mem::size_of::<*const u8>()),
+                                    ::core::mem::size_of::<*const u8>(),
+                                );
+                                let result4 = if layout4.size() != 0 {
+                                    let ptr = _rt::alloc::alloc(layout4).cast::<u8>();
+                                    if ptr.is_null() {
+                                        _rt::alloc::handle_alloc_error(layout4);
+                                    }
+                                    ptr
+                                } else {
+                                    ::core::ptr::null_mut()
+                                };
+                                for (i, e) in vec4.into_iter().enumerate() {
+                                    let base = result4
+                                        .add(i * (4 * ::core::mem::size_of::<*const u8>()));
+                                    {
+                                        let (t1_0, t1_1) = e;
+                                        let vec2 = t1_0;
+                                        let ptr2 = vec2.as_ptr().cast::<u8>();
+                                        let len2 = vec2.len();
+                                        *base
+                                            .add(::core::mem::size_of::<*const u8>())
+                                            .cast::<usize>() = len2;
+                                        *base.add(0).cast::<*mut u8>() = ptr2.cast_mut();
+                                        let vec3 = t1_1;
+                                        let ptr3 = vec3.as_ptr().cast::<u8>();
+                                        let len3 = vec3.len();
+                                        *base
+                                            .add(3 * ::core::mem::size_of::<*const u8>())
+                                            .cast::<usize>() = len3;
+                                        *base
+                                            .add(2 * ::core::mem::size_of::<*const u8>())
+                                            .cast::<*mut u8>() = ptr3.cast_mut();
+                                    }
+                                }
+                                cleanup_list.extend_from_slice(&[(result4, layout4)]);
+                                (1i32, result4, len4)
+                            }
+                            None => (0i32, ::core::ptr::null_mut(), 0usize),
+                        };
+                        let ptr6 = ret_area.0.as_mut_ptr().cast::<u8>();
+                        #[cfg(target_arch = "wasm32")]
+                        #[link(wasm_import_module = "taho:models/llm")]
+                        unsafe extern "C" {
+                            #[link_name = "[method]llm-api.prompt"]
+                            fn wit_import7(
+                                _: i32,
+                                _: *mut u8,
+                                _: usize,
+                                _: i32,
+                                _: *mut u8,
+                                _: usize,
+                                _: *mut u8,
+                            );
+                        }
+                        #[cfg(not(target_arch = "wasm32"))]
+                        unsafe extern "C" fn wit_import7(
+                            _: i32,
+                            _: *mut u8,
+                            _: usize,
+                            _: i32,
+                            _: *mut u8,
+                            _: usize,
+                            _: *mut u8,
+                        ) {
+                            unreachable!()
+                        }
+                        unsafe {
+                            wit_import7(
+                                (self).handle() as i32,
+                                ptr0.cast_mut(),
+                                len0,
+                                result5_0,
+                                result5_1,
+                                result5_2,
+                                ptr6,
+                            )
+                        };
+                        let l8 = i32::from(*ptr6.add(0).cast::<u8>());
+                        let result13 = match l8 {
+                            0 => {
+                                let e = {
+                                    let l9 = *ptr6
+                                        .add(::core::mem::size_of::<*const u8>())
+                                        .cast::<*mut u8>();
+                                    let l10 = *ptr6
+                                        .add(2 * ::core::mem::size_of::<*const u8>())
+                                        .cast::<usize>();
+                                    let len11 = l10;
+                                    _rt::Vec::from_raw_parts(l9.cast(), len11, len11)
+                                };
+                                Ok(e)
+                            }
+                            1 => {
+                                let e = {
+                                    let l12 = i32::from(
+                                        *ptr6.add(::core::mem::size_of::<*const u8>()).cast::<u8>(),
+                                    );
+                                    LlmError::_lift(l12 as u8)
+                                };
+                                Err(e)
+                            }
+                            _ => _rt::invalid_enum_discriminant(),
+                        };
+                        for (ptr, layout) in cleanup_list {
+                            if layout.size() != 0 {
+                                _rt::alloc::dealloc(ptr.cast(), layout);
+                            }
+                        }
+                        result13
+                    }
+                }
+            }
+            impl LlmApi {
+                #[allow(unused_unsafe, clippy::all)]
+                pub fn prompt_audio(
+                    &self,
+                    mp4: &[u8],
+                    context: Option<&[(_rt::String, _rt::Vec<u8>)]>,
+                ) -> Res {
+                    unsafe {
+                        let mut cleanup_list = _rt::Vec::new();
+                        #[cfg_attr(target_pointer_width = "64", repr(align(8)))]
+                        #[cfg_attr(target_pointer_width = "32", repr(align(4)))]
+                        struct RetArea(
+                            [::core::mem::MaybeUninit<
+                                u8,
+                            >; 3 * ::core::mem::size_of::<*const u8>()],
+                        );
+                        let mut ret_area = RetArea(
+                            [::core::mem::MaybeUninit::uninit(); 3
+                                * ::core::mem::size_of::<*const u8>()],
+                        );
+                        let vec0 = mp4;
+                        let ptr0 = vec0.as_ptr().cast::<u8>();
+                        let len0 = vec0.len();
+                        let (result5_0, result5_1, result5_2) = match context {
+                            Some(e) => {
+                                let vec4 = e;
+                                let len4 = vec4.len();
+                                let layout4 = _rt::alloc::Layout::from_size_align_unchecked(
+                                    vec4.len() * (4 * ::core::mem::size_of::<*const u8>()),
+                                    ::core::mem::size_of::<*const u8>(),
+                                );
+                                let result4 = if layout4.size() != 0 {
+                                    let ptr = _rt::alloc::alloc(layout4).cast::<u8>();
+                                    if ptr.is_null() {
+                                        _rt::alloc::handle_alloc_error(layout4);
+                                    }
+                                    ptr
+                                } else {
+                                    ::core::ptr::null_mut()
+                                };
+                                for (i, e) in vec4.into_iter().enumerate() {
+                                    let base = result4
+                                        .add(i * (4 * ::core::mem::size_of::<*const u8>()));
+                                    {
+                                        let (t1_0, t1_1) = e;
+                                        let vec2 = t1_0;
+                                        let ptr2 = vec2.as_ptr().cast::<u8>();
+                                        let len2 = vec2.len();
+                                        *base
+                                            .add(::core::mem::size_of::<*const u8>())
+                                            .cast::<usize>() = len2;
+                                        *base.add(0).cast::<*mut u8>() = ptr2.cast_mut();
+                                        let vec3 = t1_1;
+                                        let ptr3 = vec3.as_ptr().cast::<u8>();
+                                        let len3 = vec3.len();
+                                        *base
+                                            .add(3 * ::core::mem::size_of::<*const u8>())
+                                            .cast::<usize>() = len3;
+                                        *base
+                                            .add(2 * ::core::mem::size_of::<*const u8>())
+                                            .cast::<*mut u8>() = ptr3.cast_mut();
+                                    }
+                                }
+                                cleanup_list.extend_from_slice(&[(result4, layout4)]);
+                                (1i32, result4, len4)
+                            }
+                            None => (0i32, ::core::ptr::null_mut(), 0usize),
+                        };
+                        let ptr6 = ret_area.0.as_mut_ptr().cast::<u8>();
+                        #[cfg(target_arch = "wasm32")]
+                        #[link(wasm_import_module = "taho:models/llm")]
+                        unsafe extern "C" {
+                            #[link_name = "[method]llm-api.prompt-audio"]
+                            fn wit_import7(
+                                _: i32,
+                                _: *mut u8,
+                                _: usize,
+                                _: i32,
+                                _: *mut u8,
+                                _: usize,
+                                _: *mut u8,
+                            );
+                        }
+                        #[cfg(not(target_arch = "wasm32"))]
+                        unsafe extern "C" fn wit_import7(
+                            _: i32,
+                            _: *mut u8,
+                            _: usize,
+                            _: i32,
+                            _: *mut u8,
+                            _: usize,
+                            _: *mut u8,
+                        ) {
+                            unreachable!()
+                        }
+                        unsafe {
+                            wit_import7(
+                                (self).handle() as i32,
+                                ptr0.cast_mut(),
+                                len0,
+                                result5_0,
+                                result5_1,
+                                result5_2,
+                                ptr6,
+                            )
+                        };
+                        let l8 = i32::from(*ptr6.add(0).cast::<u8>());
+                        let result13 = match l8 {
+                            0 => {
+                                let e = {
+                                    let l9 = *ptr6
+                                        .add(::core::mem::size_of::<*const u8>())
+                                        .cast::<*mut u8>();
+                                    let l10 = *ptr6
+                                        .add(2 * ::core::mem::size_of::<*const u8>())
+                                        .cast::<usize>();
+                                    let len11 = l10;
+                                    _rt::Vec::from_raw_parts(l9.cast(), len11, len11)
+                                };
+                                Ok(e)
+                            }
+                            1 => {
+                                let e = {
+                                    let l12 = i32::from(
+                                        *ptr6.add(::core::mem::size_of::<*const u8>()).cast::<u8>(),
+                                    );
+                                    LlmError::_lift(l12 as u8)
+                                };
+                                Err(e)
+                            }
+                            _ => _rt::invalid_enum_discriminant(),
+                        };
+                        for (ptr, layout) in cleanup_list {
+                            if layout.size() != 0 {
+                                _rt::alloc::dealloc(ptr.cast(), layout);
+                            }
+                        }
+                        result13
+                    }
+                }
+            }
+            impl LlmApi {
+                #[allow(unused_unsafe, clippy::all)]
+                pub fn prompt_video(
+                    &self,
+                    mp4: &[u8],
+                    context: Option<&[(_rt::String, _rt::Vec<u8>)]>,
+                ) -> Res {
+                    unsafe {
+                        let mut cleanup_list = _rt::Vec::new();
+                        #[cfg_attr(target_pointer_width = "64", repr(align(8)))]
+                        #[cfg_attr(target_pointer_width = "32", repr(align(4)))]
+                        struct RetArea(
+                            [::core::mem::MaybeUninit<
+                                u8,
+                            >; 3 * ::core::mem::size_of::<*const u8>()],
+                        );
+                        let mut ret_area = RetArea(
+                            [::core::mem::MaybeUninit::uninit(); 3
+                                * ::core::mem::size_of::<*const u8>()],
+                        );
+                        let vec0 = mp4;
+                        let ptr0 = vec0.as_ptr().cast::<u8>();
+                        let len0 = vec0.len();
+                        let (result5_0, result5_1, result5_2) = match context {
+                            Some(e) => {
+                                let vec4 = e;
+                                let len4 = vec4.len();
+                                let layout4 = _rt::alloc::Layout::from_size_align_unchecked(
+                                    vec4.len() * (4 * ::core::mem::size_of::<*const u8>()),
+                                    ::core::mem::size_of::<*const u8>(),
+                                );
+                                let result4 = if layout4.size() != 0 {
+                                    let ptr = _rt::alloc::alloc(layout4).cast::<u8>();
+                                    if ptr.is_null() {
+                                        _rt::alloc::handle_alloc_error(layout4);
+                                    }
+                                    ptr
+                                } else {
+                                    ::core::ptr::null_mut()
+                                };
+                                for (i, e) in vec4.into_iter().enumerate() {
+                                    let base = result4
+                                        .add(i * (4 * ::core::mem::size_of::<*const u8>()));
+                                    {
+                                        let (t1_0, t1_1) = e;
+                                        let vec2 = t1_0;
+                                        let ptr2 = vec2.as_ptr().cast::<u8>();
+                                        let len2 = vec2.len();
+                                        *base
+                                            .add(::core::mem::size_of::<*const u8>())
+                                            .cast::<usize>() = len2;
+                                        *base.add(0).cast::<*mut u8>() = ptr2.cast_mut();
+                                        let vec3 = t1_1;
+                                        let ptr3 = vec3.as_ptr().cast::<u8>();
+                                        let len3 = vec3.len();
+                                        *base
+                                            .add(3 * ::core::mem::size_of::<*const u8>())
+                                            .cast::<usize>() = len3;
+                                        *base
+                                            .add(2 * ::core::mem::size_of::<*const u8>())
+                                            .cast::<*mut u8>() = ptr3.cast_mut();
+                                    }
+                                }
+                                cleanup_list.extend_from_slice(&[(result4, layout4)]);
+                                (1i32, result4, len4)
+                            }
+                            None => (0i32, ::core::ptr::null_mut(), 0usize),
+                        };
+                        let ptr6 = ret_area.0.as_mut_ptr().cast::<u8>();
+                        #[cfg(target_arch = "wasm32")]
+                        #[link(wasm_import_module = "taho:models/llm")]
+                        unsafe extern "C" {
+                            #[link_name = "[method]llm-api.prompt-video"]
+                            fn wit_import7(
+                                _: i32,
+                                _: *mut u8,
+                                _: usize,
+                                _: i32,
+                                _: *mut u8,
+                                _: usize,
+                                _: *mut u8,
+                            );
+                        }
+                        #[cfg(not(target_arch = "wasm32"))]
+                        unsafe extern "C" fn wit_import7(
+                            _: i32,
+                            _: *mut u8,
+                            _: usize,
+                            _: i32,
+                            _: *mut u8,
+                            _: usize,
+                            _: *mut u8,
+                        ) {
+                            unreachable!()
+                        }
+                        unsafe {
+                            wit_import7(
+                                (self).handle() as i32,
+                                ptr0.cast_mut(),
+                                len0,
+                                result5_0,
+                                result5_1,
+                                result5_2,
+                                ptr6,
+                            )
+                        };
+                        let l8 = i32::from(*ptr6.add(0).cast::<u8>());
+                        let result13 = match l8 {
+                            0 => {
+                                let e = {
+                                    let l9 = *ptr6
+                                        .add(::core::mem::size_of::<*const u8>())
+                                        .cast::<*mut u8>();
+                                    let l10 = *ptr6
+                                        .add(2 * ::core::mem::size_of::<*const u8>())
+                                        .cast::<usize>();
+                                    let len11 = l10;
+                                    _rt::Vec::from_raw_parts(l9.cast(), len11, len11)
+                                };
+                                Ok(e)
+                            }
+                            1 => {
+                                let e = {
+                                    let l12 = i32::from(
+                                        *ptr6.add(::core::mem::size_of::<*const u8>()).cast::<u8>(),
+                                    );
+                                    LlmError::_lift(l12 as u8)
+                                };
+                                Err(e)
+                            }
+                            _ => _rt::invalid_enum_discriminant(),
+                        };
+                        for (ptr, layout) in cleanup_list {
+                            if layout.size() != 0 {
+                                _rt::alloc::dealloc(ptr.cast(), layout);
+                            }
+                        }
+                        result13
+                    }
+                }
+            }
+            impl LlmApi {
+                #[allow(unused_unsafe, clippy::all)]
+                pub fn classify(
+                    &self,
+                    spec: &ClassSpec,
+                    context: Option<&[(_rt::String, _rt::Vec<u8>)]>,
+                ) -> Res {
+                    unsafe {
+                        let mut cleanup_list = _rt::Vec::new();
+                        #[cfg_attr(target_pointer_width = "64", repr(align(8)))]
+                        #[cfg_attr(target_pointer_width = "32", repr(align(4)))]
+                        struct RetArea(
+                            [::core::mem::MaybeUninit<
+                                u8,
+                            >; 3 * ::core::mem::size_of::<*const u8>()],
+                        );
+                        let mut ret_area = RetArea(
+                            [::core::mem::MaybeUninit::uninit(); 3
+                                * ::core::mem::size_of::<*const u8>()],
+                        );
+                        let ClassSpec {
+                            classifications: classifications0,
+                            prompt: prompt0,
+                        } = spec;
+                        let vec2 = classifications0;
+                        let len2 = vec2.len();
+                        let layout2 = _rt::alloc::Layout::from_size_align_unchecked(
+                            vec2.len() * (2 * ::core::mem::size_of::<*const u8>()),
+                            ::core::mem::size_of::<*const u8>(),
+                        );
+                        let result2 = if layout2.size() != 0 {
+                            let ptr = _rt::alloc::alloc(layout2).cast::<u8>();
+                            if ptr.is_null() {
+                                _rt::alloc::handle_alloc_error(layout2);
+                            }
+                            ptr
+                        } else {
+                            ::core::ptr::null_mut()
+                        };
+                        for (i, e) in vec2.into_iter().enumerate() {
+                            let base = result2
+                                .add(i * (2 * ::core::mem::size_of::<*const u8>()));
+                            {
+                                let vec1 = e;
+                                let ptr1 = vec1.as_ptr().cast::<u8>();
+                                let len1 = vec1.len();
+                                *base
+                                    .add(::core::mem::size_of::<*const u8>())
+                                    .cast::<usize>() = len1;
+                                *base.add(0).cast::<*mut u8>() = ptr1.cast_mut();
+                            }
+                        }
+                        let vec3 = prompt0;
+                        let ptr3 = vec3.as_ptr().cast::<u8>();
+                        let len3 = vec3.len();
+                        let (result8_0, result8_1, result8_2) = match context {
+                            Some(e) => {
+                                let vec7 = e;
+                                let len7 = vec7.len();
+                                let layout7 = _rt::alloc::Layout::from_size_align_unchecked(
+                                    vec7.len() * (4 * ::core::mem::size_of::<*const u8>()),
+                                    ::core::mem::size_of::<*const u8>(),
+                                );
+                                let result7 = if layout7.size() != 0 {
+                                    let ptr = _rt::alloc::alloc(layout7).cast::<u8>();
+                                    if ptr.is_null() {
+                                        _rt::alloc::handle_alloc_error(layout7);
+                                    }
+                                    ptr
+                                } else {
+                                    ::core::ptr::null_mut()
+                                };
+                                for (i, e) in vec7.into_iter().enumerate() {
+                                    let base = result7
+                                        .add(i * (4 * ::core::mem::size_of::<*const u8>()));
+                                    {
+                                        let (t4_0, t4_1) = e;
+                                        let vec5 = t4_0;
+                                        let ptr5 = vec5.as_ptr().cast::<u8>();
+                                        let len5 = vec5.len();
+                                        *base
+                                            .add(::core::mem::size_of::<*const u8>())
+                                            .cast::<usize>() = len5;
+                                        *base.add(0).cast::<*mut u8>() = ptr5.cast_mut();
+                                        let vec6 = t4_1;
+                                        let ptr6 = vec6.as_ptr().cast::<u8>();
+                                        let len6 = vec6.len();
+                                        *base
+                                            .add(3 * ::core::mem::size_of::<*const u8>())
+                                            .cast::<usize>() = len6;
+                                        *base
+                                            .add(2 * ::core::mem::size_of::<*const u8>())
+                                            .cast::<*mut u8>() = ptr6.cast_mut();
+                                    }
+                                }
+                                cleanup_list.extend_from_slice(&[(result7, layout7)]);
+                                (1i32, result7, len7)
+                            }
+                            None => (0i32, ::core::ptr::null_mut(), 0usize),
+                        };
+                        let ptr9 = ret_area.0.as_mut_ptr().cast::<u8>();
+                        #[cfg(target_arch = "wasm32")]
+                        #[link(wasm_import_module = "taho:models/llm")]
+                        unsafe extern "C" {
+                            #[link_name = "[method]llm-api.classify"]
+                            fn wit_import10(
+                                _: i32,
+                                _: *mut u8,
+                                _: usize,
+                                _: *mut u8,
+                                _: usize,
+                                _: i32,
+                                _: *mut u8,
+                                _: usize,
+                                _: *mut u8,
+                            );
+                        }
+                        #[cfg(not(target_arch = "wasm32"))]
+                        unsafe extern "C" fn wit_import10(
+                            _: i32,
+                            _: *mut u8,
+                            _: usize,
+                            _: *mut u8,
+                            _: usize,
+                            _: i32,
+                            _: *mut u8,
+                            _: usize,
+                            _: *mut u8,
+                        ) {
+                            unreachable!()
+                        }
+                        unsafe {
+                            wit_import10(
+                                (self).handle() as i32,
+                                result2,
+                                len2,
+                                ptr3.cast_mut(),
+                                len3,
+                                result8_0,
+                                result8_1,
+                                result8_2,
+                                ptr9,
+                            )
+                        };
+                        let l11 = i32::from(*ptr9.add(0).cast::<u8>());
+                        let result16 = match l11 {
+                            0 => {
+                                let e = {
+                                    let l12 = *ptr9
+                                        .add(::core::mem::size_of::<*const u8>())
+                                        .cast::<*mut u8>();
+                                    let l13 = *ptr9
+                                        .add(2 * ::core::mem::size_of::<*const u8>())
+                                        .cast::<usize>();
+                                    let len14 = l13;
+                                    _rt::Vec::from_raw_parts(l12.cast(), len14, len14)
+                                };
+                                Ok(e)
+                            }
+                            1 => {
+                                let e = {
+                                    let l15 = i32::from(
+                                        *ptr9.add(::core::mem::size_of::<*const u8>()).cast::<u8>(),
+                                    );
+                                    LlmError::_lift(l15 as u8)
+                                };
+                                Err(e)
+                            }
+                            _ => _rt::invalid_enum_discriminant(),
+                        };
+                        if layout2.size() != 0 {
+                            _rt::alloc::dealloc(result2.cast(), layout2);
+                        }
+                        for (ptr, layout) in cleanup_list {
+                            if layout.size() != 0 {
+                                _rt::alloc::dealloc(ptr.cast(), layout);
+                            }
+                        }
+                        result16
+                    }
+                }
+            }
+            impl LlmApi {
+                #[allow(unused_unsafe, clippy::all)]
+                pub fn structure_res(
+                    &self,
+                    template: &str,
+                    prompt: &str,
+                    context: Option<&[(_rt::String, _rt::Vec<u8>)]>,
+                ) -> Res {
+                    unsafe {
+                        let mut cleanup_list = _rt::Vec::new();
+                        #[cfg_attr(target_pointer_width = "64", repr(align(8)))]
+                        #[cfg_attr(target_pointer_width = "32", repr(align(4)))]
+                        struct RetArea(
+                            [::core::mem::MaybeUninit<
+                                u8,
+                            >; 3 * ::core::mem::size_of::<*const u8>()],
+                        );
+                        let mut ret_area = RetArea(
+                            [::core::mem::MaybeUninit::uninit(); 3
+                                * ::core::mem::size_of::<*const u8>()],
+                        );
+                        let vec0 = template;
+                        let ptr0 = vec0.as_ptr().cast::<u8>();
+                        let len0 = vec0.len();
+                        let vec1 = prompt;
+                        let ptr1 = vec1.as_ptr().cast::<u8>();
+                        let len1 = vec1.len();
+                        let (result6_0, result6_1, result6_2) = match context {
+                            Some(e) => {
+                                let vec5 = e;
+                                let len5 = vec5.len();
+                                let layout5 = _rt::alloc::Layout::from_size_align_unchecked(
+                                    vec5.len() * (4 * ::core::mem::size_of::<*const u8>()),
+                                    ::core::mem::size_of::<*const u8>(),
+                                );
+                                let result5 = if layout5.size() != 0 {
+                                    let ptr = _rt::alloc::alloc(layout5).cast::<u8>();
+                                    if ptr.is_null() {
+                                        _rt::alloc::handle_alloc_error(layout5);
+                                    }
+                                    ptr
+                                } else {
+                                    ::core::ptr::null_mut()
+                                };
+                                for (i, e) in vec5.into_iter().enumerate() {
+                                    let base = result5
+                                        .add(i * (4 * ::core::mem::size_of::<*const u8>()));
+                                    {
+                                        let (t2_0, t2_1) = e;
+                                        let vec3 = t2_0;
+                                        let ptr3 = vec3.as_ptr().cast::<u8>();
+                                        let len3 = vec3.len();
+                                        *base
+                                            .add(::core::mem::size_of::<*const u8>())
+                                            .cast::<usize>() = len3;
+                                        *base.add(0).cast::<*mut u8>() = ptr3.cast_mut();
+                                        let vec4 = t2_1;
+                                        let ptr4 = vec4.as_ptr().cast::<u8>();
+                                        let len4 = vec4.len();
+                                        *base
+                                            .add(3 * ::core::mem::size_of::<*const u8>())
+                                            .cast::<usize>() = len4;
+                                        *base
+                                            .add(2 * ::core::mem::size_of::<*const u8>())
+                                            .cast::<*mut u8>() = ptr4.cast_mut();
+                                    }
+                                }
+                                cleanup_list.extend_from_slice(&[(result5, layout5)]);
+                                (1i32, result5, len5)
+                            }
+                            None => (0i32, ::core::ptr::null_mut(), 0usize),
+                        };
+                        let ptr7 = ret_area.0.as_mut_ptr().cast::<u8>();
+                        #[cfg(target_arch = "wasm32")]
+                        #[link(wasm_import_module = "taho:models/llm")]
+                        unsafe extern "C" {
+                            #[link_name = "[method]llm-api.structure-res"]
+                            fn wit_import8(
+                                _: i32,
+                                _: *mut u8,
+                                _: usize,
+                                _: *mut u8,
+                                _: usize,
+                                _: i32,
+                                _: *mut u8,
+                                _: usize,
+                                _: *mut u8,
+                            );
+                        }
+                        #[cfg(not(target_arch = "wasm32"))]
+                        unsafe extern "C" fn wit_import8(
+                            _: i32,
+                            _: *mut u8,
+                            _: usize,
+                            _: *mut u8,
+                            _: usize,
+                            _: i32,
+                            _: *mut u8,
+                            _: usize,
+                            _: *mut u8,
+                        ) {
+                            unreachable!()
+                        }
+                        unsafe {
+                            wit_import8(
+                                (self).handle() as i32,
+                                ptr0.cast_mut(),
+                                len0,
+                                ptr1.cast_mut(),
+                                len1,
+                                result6_0,
+                                result6_1,
+                                result6_2,
+                                ptr7,
+                            )
+                        };
+                        let l9 = i32::from(*ptr7.add(0).cast::<u8>());
+                        let result14 = match l9 {
+                            0 => {
+                                let e = {
+                                    let l10 = *ptr7
+                                        .add(::core::mem::size_of::<*const u8>())
+                                        .cast::<*mut u8>();
+                                    let l11 = *ptr7
+                                        .add(2 * ::core::mem::size_of::<*const u8>())
+                                        .cast::<usize>();
+                                    let len12 = l11;
+                                    _rt::Vec::from_raw_parts(l10.cast(), len12, len12)
+                                };
+                                Ok(e)
+                            }
+                            1 => {
+                                let e = {
+                                    let l13 = i32::from(
+                                        *ptr7.add(::core::mem::size_of::<*const u8>()).cast::<u8>(),
+                                    );
+                                    LlmError::_lift(l13 as u8)
+                                };
+                                Err(e)
+                            }
+                            _ => _rt::invalid_enum_discriminant(),
+                        };
+                        for (ptr, layout) in cleanup_list {
+                            if layout.size() != 0 {
+                                _rt::alloc::dealloc(ptr.cast(), layout);
+                            }
+                        }
+                        result14
+                    }
+                }
+            }
+        }
+    }
+}
+#[rustfmt::skip]
+#[allow(dead_code, clippy::all)]
 pub mod exports {
     pub mod taho {
         pub mod models {
@@ -1001,507 +2791,6 @@ pub mod exports {
                 }
                 #[doc(hidden)]
                 pub(crate) use __export_taho_models_model_data_cabi;
-            }
-            #[allow(dead_code, async_fn_in_trait, unused_imports, clippy::all)]
-            pub mod port {
-                #[used]
-                #[doc(hidden)]
-                static __FORCE_SECTION_REF: fn() = super::super::super::super::__link_custom_section_describing_imports;
-                use super::super::super::super::_rt;
-                #[derive(Clone)]
-                pub enum PortError {
-                    Error(_rt::String),
-                }
-                impl ::core::fmt::Debug for PortError {
-                    fn fmt(
-                        &self,
-                        f: &mut ::core::fmt::Formatter<'_>,
-                    ) -> ::core::fmt::Result {
-                        match self {
-                            PortError::Error(e) => {
-                                f.debug_tuple("PortError::Error").field(e).finish()
-                            }
-                        }
-                    }
-                }
-                impl ::core::fmt::Display for PortError {
-                    fn fmt(
-                        &self,
-                        f: &mut ::core::fmt::Formatter<'_>,
-                    ) -> ::core::fmt::Result {
-                        write!(f, "{:?}", self)
-                    }
-                }
-                impl std::error::Error for PortError {}
-                #[derive(Clone)]
-                pub struct PortData {
-                    pub data: _rt::Vec<u8>,
-                    pub wfid: _rt::String,
-                    pub wfstate: _rt::String,
-                    pub wfhist: _rt::Vec<_rt::String>,
-                }
-                impl ::core::fmt::Debug for PortData {
-                    fn fmt(
-                        &self,
-                        f: &mut ::core::fmt::Formatter<'_>,
-                    ) -> ::core::fmt::Result {
-                        f.debug_struct("PortData")
-                            .field("data", &self.data)
-                            .field("wfid", &self.wfid)
-                            .field("wfstate", &self.wfstate)
-                            .field("wfhist", &self.wfhist)
-                            .finish()
-                    }
-                }
-                #[derive(Debug)]
-                #[repr(transparent)]
-                pub struct Ports {
-                    handle: _rt::Resource<Ports>,
-                }
-                type _PortsRep<T> = Option<T>;
-                impl Ports {
-                    /// Creates a new resource from the specified representation.
-                    ///
-                    /// This function will create a new resource handle by moving `val` onto
-                    /// the heap and then passing that heap pointer to the component model to
-                    /// create a handle. The owned handle is then returned as `Ports`.
-                    pub fn new<T: GuestPorts>(val: T) -> Self {
-                        Self::type_guard::<T>();
-                        let val: _PortsRep<T> = Some(val);
-                        let ptr: *mut _PortsRep<T> = _rt::Box::into_raw(
-                            _rt::Box::new(val),
-                        );
-                        unsafe { Self::from_handle(T::_resource_new(ptr.cast())) }
-                    }
-                    /// Gets access to the underlying `T` which represents this resource.
-                    pub fn get<T: GuestPorts>(&self) -> &T {
-                        let ptr = unsafe { &*self.as_ptr::<T>() };
-                        ptr.as_ref().unwrap()
-                    }
-                    /// Gets mutable access to the underlying `T` which represents this
-                    /// resource.
-                    pub fn get_mut<T: GuestPorts>(&mut self) -> &mut T {
-                        let ptr = unsafe { &mut *self.as_ptr::<T>() };
-                        ptr.as_mut().unwrap()
-                    }
-                    /// Consumes this resource and returns the underlying `T`.
-                    pub fn into_inner<T: GuestPorts>(self) -> T {
-                        let ptr = unsafe { &mut *self.as_ptr::<T>() };
-                        ptr.take().unwrap()
-                    }
-                    #[doc(hidden)]
-                    pub unsafe fn from_handle(handle: u32) -> Self {
-                        Self {
-                            handle: unsafe { _rt::Resource::from_handle(handle) },
-                        }
-                    }
-                    #[doc(hidden)]
-                    pub fn take_handle(&self) -> u32 {
-                        _rt::Resource::take_handle(&self.handle)
-                    }
-                    #[doc(hidden)]
-                    pub fn handle(&self) -> u32 {
-                        _rt::Resource::handle(&self.handle)
-                    }
-                    #[doc(hidden)]
-                    fn type_guard<T: 'static>() {
-                        use core::any::TypeId;
-                        static mut LAST_TYPE: Option<TypeId> = None;
-                        unsafe {
-                            assert!(! cfg!(target_feature = "atomics"));
-                            let id = TypeId::of::<T>();
-                            match LAST_TYPE {
-                                Some(ty) => {
-                                    assert!(
-                                        ty == id, "cannot use two types with this resource type"
-                                    )
-                                }
-                                None => LAST_TYPE = Some(id),
-                            }
-                        }
-                    }
-                    #[doc(hidden)]
-                    pub unsafe fn dtor<T: 'static>(handle: *mut u8) {
-                        Self::type_guard::<T>();
-                        let _ = unsafe {
-                            _rt::Box::from_raw(handle as *mut _PortsRep<T>)
-                        };
-                    }
-                    fn as_ptr<T: GuestPorts>(&self) -> *mut _PortsRep<T> {
-                        Ports::type_guard::<T>();
-                        T::_resource_rep(self.handle()).cast()
-                    }
-                }
-                /// A borrowed version of [`Ports`] which represents a borrowed value
-                /// with the lifetime `'a`.
-                #[derive(Debug)]
-                #[repr(transparent)]
-                pub struct PortsBorrow<'a> {
-                    rep: *mut u8,
-                    _marker: core::marker::PhantomData<&'a Ports>,
-                }
-                impl<'a> PortsBorrow<'a> {
-                    #[doc(hidden)]
-                    pub unsafe fn lift(rep: usize) -> Self {
-                        Self {
-                            rep: rep as *mut u8,
-                            _marker: core::marker::PhantomData,
-                        }
-                    }
-                    /// Gets access to the underlying `T` in this resource.
-                    pub fn get<T: GuestPorts>(&self) -> &T {
-                        let ptr = unsafe { &mut *self.as_ptr::<T>() };
-                        ptr.as_ref().unwrap()
-                    }
-                    fn as_ptr<T: 'static>(&self) -> *mut _PortsRep<T> {
-                        Ports::type_guard::<T>();
-                        self.rep.cast()
-                    }
-                }
-                unsafe impl _rt::WasmResource for Ports {
-                    #[inline]
-                    unsafe fn drop(_handle: u32) {
-                        #[cfg(not(target_arch = "wasm32"))]
-                        unreachable!();
-                        #[cfg(target_arch = "wasm32")]
-                        {
-                            #[link(wasm_import_module = "[export]taho:models/port")]
-                            unsafe extern "C" {
-                                #[link_name = "[resource-drop]ports"]
-                                fn drop(_: u32);
-                            }
-                            unsafe { drop(_handle) };
-                        }
-                    }
-                }
-                #[doc(hidden)]
-                #[allow(non_snake_case)]
-                pub unsafe fn _export_constructor_ports_cabi<T: GuestPorts>() -> i32 {
-                    #[cfg(target_arch = "wasm32")] _rt::run_ctors_once();
-                    let result0 = Ports::new(T::new());
-                    (result0).take_handle() as i32
-                }
-                #[doc(hidden)]
-                #[allow(non_snake_case)]
-                pub unsafe fn _export_method_ports_invoke_port_cabi<T: GuestPorts>(
-                    arg0: *mut u8,
-                    arg1: *mut u8,
-                    arg2: usize,
-                    arg3: *mut u8,
-                    arg4: usize,
-                    arg5: *mut u8,
-                    arg6: usize,
-                    arg7: *mut u8,
-                    arg8: usize,
-                    arg9: *mut u8,
-                    arg10: usize,
-                ) -> *mut u8 {
-                    #[cfg(target_arch = "wasm32")] _rt::run_ctors_once();
-                    let len0 = arg2;
-                    let bytes0 = _rt::Vec::from_raw_parts(arg1.cast(), len0, len0);
-                    let len1 = arg4;
-                    let len2 = arg6;
-                    let bytes2 = _rt::Vec::from_raw_parts(arg5.cast(), len2, len2);
-                    let len3 = arg8;
-                    let bytes3 = _rt::Vec::from_raw_parts(arg7.cast(), len3, len3);
-                    let base7 = arg9;
-                    let len7 = arg10;
-                    let mut result7 = _rt::Vec::with_capacity(len7);
-                    for i in 0..len7 {
-                        let base = base7
-                            .add(i * (2 * ::core::mem::size_of::<*const u8>()));
-                        let e7 = {
-                            let l4 = *base.add(0).cast::<*mut u8>();
-                            let l5 = *base
-                                .add(::core::mem::size_of::<*const u8>())
-                                .cast::<usize>();
-                            let len6 = l5;
-                            let bytes6 = _rt::Vec::from_raw_parts(l4.cast(), len6, len6);
-                            _rt::string_lift(bytes6)
-                        };
-                        result7.push(e7);
-                    }
-                    _rt::cabi_dealloc(
-                        base7,
-                        len7 * (2 * ::core::mem::size_of::<*const u8>()),
-                        ::core::mem::size_of::<*const u8>(),
-                    );
-                    let result8 = T::invoke_port(
-                        unsafe { PortsBorrow::lift(arg0 as u32 as usize) }.get(),
-                        _rt::string_lift(bytes0),
-                        PortData {
-                            data: _rt::Vec::from_raw_parts(arg3.cast(), len1, len1),
-                            wfid: _rt::string_lift(bytes2),
-                            wfstate: _rt::string_lift(bytes3),
-                            wfhist: result7,
-                        },
-                    );
-                    let ptr9 = (&raw mut _RET_AREA.0).cast::<u8>();
-                    match result8 {
-                        Ok(e) => {
-                            *ptr9.add(0).cast::<u8>() = (0i32) as u8;
-                            let PortData {
-                                data: data10,
-                                wfid: wfid10,
-                                wfstate: wfstate10,
-                                wfhist: wfhist10,
-                            } = e;
-                            let vec11 = (data10).into_boxed_slice();
-                            let ptr11 = vec11.as_ptr().cast::<u8>();
-                            let len11 = vec11.len();
-                            ::core::mem::forget(vec11);
-                            *ptr9
-                                .add(2 * ::core::mem::size_of::<*const u8>())
-                                .cast::<usize>() = len11;
-                            *ptr9
-                                .add(::core::mem::size_of::<*const u8>())
-                                .cast::<*mut u8>() = ptr11.cast_mut();
-                            let vec12 = (wfid10.into_bytes()).into_boxed_slice();
-                            let ptr12 = vec12.as_ptr().cast::<u8>();
-                            let len12 = vec12.len();
-                            ::core::mem::forget(vec12);
-                            *ptr9
-                                .add(4 * ::core::mem::size_of::<*const u8>())
-                                .cast::<usize>() = len12;
-                            *ptr9
-                                .add(3 * ::core::mem::size_of::<*const u8>())
-                                .cast::<*mut u8>() = ptr12.cast_mut();
-                            let vec13 = (wfstate10.into_bytes()).into_boxed_slice();
-                            let ptr13 = vec13.as_ptr().cast::<u8>();
-                            let len13 = vec13.len();
-                            ::core::mem::forget(vec13);
-                            *ptr9
-                                .add(6 * ::core::mem::size_of::<*const u8>())
-                                .cast::<usize>() = len13;
-                            *ptr9
-                                .add(5 * ::core::mem::size_of::<*const u8>())
-                                .cast::<*mut u8>() = ptr13.cast_mut();
-                            let vec15 = wfhist10;
-                            let len15 = vec15.len();
-                            let layout15 = _rt::alloc::Layout::from_size_align_unchecked(
-                                vec15.len() * (2 * ::core::mem::size_of::<*const u8>()),
-                                ::core::mem::size_of::<*const u8>(),
-                            );
-                            let result15 = if layout15.size() != 0 {
-                                let ptr = _rt::alloc::alloc(layout15).cast::<u8>();
-                                if ptr.is_null() {
-                                    _rt::alloc::handle_alloc_error(layout15);
-                                }
-                                ptr
-                            } else {
-                                ::core::ptr::null_mut()
-                            };
-                            for (i, e) in vec15.into_iter().enumerate() {
-                                let base = result15
-                                    .add(i * (2 * ::core::mem::size_of::<*const u8>()));
-                                {
-                                    let vec14 = (e.into_bytes()).into_boxed_slice();
-                                    let ptr14 = vec14.as_ptr().cast::<u8>();
-                                    let len14 = vec14.len();
-                                    ::core::mem::forget(vec14);
-                                    *base
-                                        .add(::core::mem::size_of::<*const u8>())
-                                        .cast::<usize>() = len14;
-                                    *base.add(0).cast::<*mut u8>() = ptr14.cast_mut();
-                                }
-                            }
-                            *ptr9
-                                .add(8 * ::core::mem::size_of::<*const u8>())
-                                .cast::<usize>() = len15;
-                            *ptr9
-                                .add(7 * ::core::mem::size_of::<*const u8>())
-                                .cast::<*mut u8>() = result15;
-                        }
-                        Err(e) => {
-                            *ptr9.add(0).cast::<u8>() = (1i32) as u8;
-                            match e {
-                                PortError::Error(e) => {
-                                    *ptr9
-                                        .add(::core::mem::size_of::<*const u8>())
-                                        .cast::<u8>() = (0i32) as u8;
-                                    let vec16 = (e.into_bytes()).into_boxed_slice();
-                                    let ptr16 = vec16.as_ptr().cast::<u8>();
-                                    let len16 = vec16.len();
-                                    ::core::mem::forget(vec16);
-                                    *ptr9
-                                        .add(3 * ::core::mem::size_of::<*const u8>())
-                                        .cast::<usize>() = len16;
-                                    *ptr9
-                                        .add(2 * ::core::mem::size_of::<*const u8>())
-                                        .cast::<*mut u8>() = ptr16.cast_mut();
-                                }
-                            }
-                        }
-                    };
-                    ptr9
-                }
-                #[doc(hidden)]
-                #[allow(non_snake_case)]
-                pub unsafe fn __post_return_method_ports_invoke_port<T: GuestPorts>(
-                    arg0: *mut u8,
-                ) {
-                    let l0 = i32::from(*arg0.add(0).cast::<u8>());
-                    match l0 {
-                        0 => {
-                            let l1 = *arg0
-                                .add(::core::mem::size_of::<*const u8>())
-                                .cast::<*mut u8>();
-                            let l2 = *arg0
-                                .add(2 * ::core::mem::size_of::<*const u8>())
-                                .cast::<usize>();
-                            let base3 = l1;
-                            let len3 = l2;
-                            _rt::cabi_dealloc(base3, len3 * 1, 1);
-                            let l4 = *arg0
-                                .add(3 * ::core::mem::size_of::<*const u8>())
-                                .cast::<*mut u8>();
-                            let l5 = *arg0
-                                .add(4 * ::core::mem::size_of::<*const u8>())
-                                .cast::<usize>();
-                            _rt::cabi_dealloc(l4, l5, 1);
-                            let l6 = *arg0
-                                .add(5 * ::core::mem::size_of::<*const u8>())
-                                .cast::<*mut u8>();
-                            let l7 = *arg0
-                                .add(6 * ::core::mem::size_of::<*const u8>())
-                                .cast::<usize>();
-                            _rt::cabi_dealloc(l6, l7, 1);
-                            let l8 = *arg0
-                                .add(7 * ::core::mem::size_of::<*const u8>())
-                                .cast::<*mut u8>();
-                            let l9 = *arg0
-                                .add(8 * ::core::mem::size_of::<*const u8>())
-                                .cast::<usize>();
-                            let base12 = l8;
-                            let len12 = l9;
-                            for i in 0..len12 {
-                                let base = base12
-                                    .add(i * (2 * ::core::mem::size_of::<*const u8>()));
-                                {
-                                    let l10 = *base.add(0).cast::<*mut u8>();
-                                    let l11 = *base
-                                        .add(::core::mem::size_of::<*const u8>())
-                                        .cast::<usize>();
-                                    _rt::cabi_dealloc(l10, l11, 1);
-                                }
-                            }
-                            _rt::cabi_dealloc(
-                                base12,
-                                len12 * (2 * ::core::mem::size_of::<*const u8>()),
-                                ::core::mem::size_of::<*const u8>(),
-                            );
-                        }
-                        _ => {
-                            let l13 = i32::from(
-                                *arg0.add(::core::mem::size_of::<*const u8>()).cast::<u8>(),
-                            );
-                            match l13 {
-                                _ => {
-                                    let l14 = *arg0
-                                        .add(2 * ::core::mem::size_of::<*const u8>())
-                                        .cast::<*mut u8>();
-                                    let l15 = *arg0
-                                        .add(3 * ::core::mem::size_of::<*const u8>())
-                                        .cast::<usize>();
-                                    _rt::cabi_dealloc(l14, l15, 1);
-                                }
-                            }
-                        }
-                    }
-                }
-                pub trait Guest {
-                    type Ports: GuestPorts;
-                }
-                pub trait GuestPorts: 'static {
-                    #[doc(hidden)]
-                    unsafe fn _resource_new(val: *mut u8) -> u32
-                    where
-                        Self: Sized,
-                    {
-                        #[cfg(not(target_arch = "wasm32"))]
-                        {
-                            let _ = val;
-                            unreachable!();
-                        }
-                        #[cfg(target_arch = "wasm32")]
-                        {
-                            #[link(wasm_import_module = "[export]taho:models/port")]
-                            unsafe extern "C" {
-                                #[link_name = "[resource-new]ports"]
-                                fn new(_: *mut u8) -> u32;
-                            }
-                            unsafe { new(val) }
-                        }
-                    }
-                    #[doc(hidden)]
-                    fn _resource_rep(handle: u32) -> *mut u8
-                    where
-                        Self: Sized,
-                    {
-                        #[cfg(not(target_arch = "wasm32"))]
-                        {
-                            let _ = handle;
-                            unreachable!();
-                        }
-                        #[cfg(target_arch = "wasm32")]
-                        {
-                            #[link(wasm_import_module = "[export]taho:models/port")]
-                            unsafe extern "C" {
-                                #[link_name = "[resource-rep]ports"]
-                                fn rep(_: u32) -> *mut u8;
-                            }
-                            unsafe { rep(handle) }
-                        }
-                    }
-                    fn new() -> Self;
-                    fn invoke_port(
-                        &self,
-                        name: _rt::String,
-                        data: PortData,
-                    ) -> Result<PortData, PortError>;
-                }
-                #[doc(hidden)]
-                macro_rules! __export_taho_models_port_cabi {
-                    ($ty:ident with_types_in $($path_to_types:tt)*) => {
-                        const _ : () = { #[unsafe (export_name =
-                        "taho:models/port#[constructor]ports")] unsafe extern "C" fn
-                        export_constructor_ports() -> i32 { unsafe { $($path_to_types)*::
-                        _export_constructor_ports_cabi::<<$ty as $($path_to_types)*::
-                        Guest >::Ports > () } } #[unsafe (export_name =
-                        "taho:models/port#[method]ports.invoke-port")] unsafe extern "C"
-                        fn export_method_ports_invoke_port(arg0 : * mut u8, arg1 : * mut
-                        u8, arg2 : usize, arg3 : * mut u8, arg4 : usize, arg5 : * mut u8,
-                        arg6 : usize, arg7 : * mut u8, arg8 : usize, arg9 : * mut u8,
-                        arg10 : usize,) -> * mut u8 { unsafe { $($path_to_types)*::
-                        _export_method_ports_invoke_port_cabi::<<$ty as
-                        $($path_to_types)*:: Guest >::Ports > (arg0, arg1, arg2, arg3,
-                        arg4, arg5, arg6, arg7, arg8, arg9, arg10) } } #[unsafe
-                        (export_name =
-                        "cabi_post_taho:models/port#[method]ports.invoke-port")] unsafe
-                        extern "C" fn _post_return_method_ports_invoke_port(arg0 : * mut
-                        u8,) { unsafe { $($path_to_types)*::
-                        __post_return_method_ports_invoke_port::<<$ty as
-                        $($path_to_types)*:: Guest >::Ports > (arg0) } } const _ : () = {
-                        #[doc(hidden)] #[unsafe (export_name =
-                        "taho:models/port#[dtor]ports")] #[allow(non_snake_case)] unsafe
-                        extern "C" fn dtor(rep : * mut u8) { unsafe {
-                        $($path_to_types)*:: Ports::dtor::< <$ty as $($path_to_types)*::
-                        Guest >::Ports > (rep) } } }; };
-                    };
-                }
-                #[doc(hidden)]
-                pub(crate) use __export_taho_models_port_cabi;
-                #[cfg_attr(target_pointer_width = "64", repr(align(8)))]
-                #[cfg_attr(target_pointer_width = "32", repr(align(4)))]
-                struct _RetArea(
-                    [::core::mem::MaybeUninit<
-                        u8,
-                    >; 9 * ::core::mem::size_of::<*const u8>()],
-                );
-                static mut _RET_AREA: _RetArea = _RetArea(
-                    [::core::mem::MaybeUninit::uninit(); 9
-                        * ::core::mem::size_of::<*const u8>()],
-                );
             }
             #[allow(dead_code, async_fn_in_trait, unused_imports, clippy::all)]
             pub mod crud {
@@ -2517,6 +3806,517 @@ pub mod exports {
                         * ::core::mem::size_of::<*const u8>()],
                 );
             }
+            #[allow(dead_code, async_fn_in_trait, unused_imports, clippy::all)]
+            pub mod port {
+                #[used]
+                #[doc(hidden)]
+                static __FORCE_SECTION_REF: fn() = super::super::super::super::__link_custom_section_describing_imports;
+                use super::super::super::super::_rt;
+                #[derive(Clone)]
+                pub enum PortError {
+                    NotFound,
+                    Error(_rt::String),
+                }
+                impl ::core::fmt::Debug for PortError {
+                    fn fmt(
+                        &self,
+                        f: &mut ::core::fmt::Formatter<'_>,
+                    ) -> ::core::fmt::Result {
+                        match self {
+                            PortError::NotFound => {
+                                f.debug_tuple("PortError::NotFound").finish()
+                            }
+                            PortError::Error(e) => {
+                                f.debug_tuple("PortError::Error").field(e).finish()
+                            }
+                        }
+                    }
+                }
+                impl ::core::fmt::Display for PortError {
+                    fn fmt(
+                        &self,
+                        f: &mut ::core::fmt::Formatter<'_>,
+                    ) -> ::core::fmt::Result {
+                        write!(f, "{:?}", self)
+                    }
+                }
+                impl std::error::Error for PortError {}
+                #[derive(Clone)]
+                pub struct PortData {
+                    pub data: _rt::Vec<u8>,
+                    pub wfid: _rt::String,
+                    pub wfstate: _rt::String,
+                    pub wfhist: _rt::Vec<_rt::String>,
+                }
+                impl ::core::fmt::Debug for PortData {
+                    fn fmt(
+                        &self,
+                        f: &mut ::core::fmt::Formatter<'_>,
+                    ) -> ::core::fmt::Result {
+                        f.debug_struct("PortData")
+                            .field("data", &self.data)
+                            .field("wfid", &self.wfid)
+                            .field("wfstate", &self.wfstate)
+                            .field("wfhist", &self.wfhist)
+                            .finish()
+                    }
+                }
+                #[derive(Debug)]
+                #[repr(transparent)]
+                pub struct Ports {
+                    handle: _rt::Resource<Ports>,
+                }
+                type _PortsRep<T> = Option<T>;
+                impl Ports {
+                    /// Creates a new resource from the specified representation.
+                    ///
+                    /// This function will create a new resource handle by moving `val` onto
+                    /// the heap and then passing that heap pointer to the component model to
+                    /// create a handle. The owned handle is then returned as `Ports`.
+                    pub fn new<T: GuestPorts>(val: T) -> Self {
+                        Self::type_guard::<T>();
+                        let val: _PortsRep<T> = Some(val);
+                        let ptr: *mut _PortsRep<T> = _rt::Box::into_raw(
+                            _rt::Box::new(val),
+                        );
+                        unsafe { Self::from_handle(T::_resource_new(ptr.cast())) }
+                    }
+                    /// Gets access to the underlying `T` which represents this resource.
+                    pub fn get<T: GuestPorts>(&self) -> &T {
+                        let ptr = unsafe { &*self.as_ptr::<T>() };
+                        ptr.as_ref().unwrap()
+                    }
+                    /// Gets mutable access to the underlying `T` which represents this
+                    /// resource.
+                    pub fn get_mut<T: GuestPorts>(&mut self) -> &mut T {
+                        let ptr = unsafe { &mut *self.as_ptr::<T>() };
+                        ptr.as_mut().unwrap()
+                    }
+                    /// Consumes this resource and returns the underlying `T`.
+                    pub fn into_inner<T: GuestPorts>(self) -> T {
+                        let ptr = unsafe { &mut *self.as_ptr::<T>() };
+                        ptr.take().unwrap()
+                    }
+                    #[doc(hidden)]
+                    pub unsafe fn from_handle(handle: u32) -> Self {
+                        Self {
+                            handle: unsafe { _rt::Resource::from_handle(handle) },
+                        }
+                    }
+                    #[doc(hidden)]
+                    pub fn take_handle(&self) -> u32 {
+                        _rt::Resource::take_handle(&self.handle)
+                    }
+                    #[doc(hidden)]
+                    pub fn handle(&self) -> u32 {
+                        _rt::Resource::handle(&self.handle)
+                    }
+                    #[doc(hidden)]
+                    fn type_guard<T: 'static>() {
+                        use core::any::TypeId;
+                        static mut LAST_TYPE: Option<TypeId> = None;
+                        unsafe {
+                            assert!(! cfg!(target_feature = "atomics"));
+                            let id = TypeId::of::<T>();
+                            match LAST_TYPE {
+                                Some(ty) => {
+                                    assert!(
+                                        ty == id, "cannot use two types with this resource type"
+                                    )
+                                }
+                                None => LAST_TYPE = Some(id),
+                            }
+                        }
+                    }
+                    #[doc(hidden)]
+                    pub unsafe fn dtor<T: 'static>(handle: *mut u8) {
+                        Self::type_guard::<T>();
+                        let _ = unsafe {
+                            _rt::Box::from_raw(handle as *mut _PortsRep<T>)
+                        };
+                    }
+                    fn as_ptr<T: GuestPorts>(&self) -> *mut _PortsRep<T> {
+                        Ports::type_guard::<T>();
+                        T::_resource_rep(self.handle()).cast()
+                    }
+                }
+                /// A borrowed version of [`Ports`] which represents a borrowed value
+                /// with the lifetime `'a`.
+                #[derive(Debug)]
+                #[repr(transparent)]
+                pub struct PortsBorrow<'a> {
+                    rep: *mut u8,
+                    _marker: core::marker::PhantomData<&'a Ports>,
+                }
+                impl<'a> PortsBorrow<'a> {
+                    #[doc(hidden)]
+                    pub unsafe fn lift(rep: usize) -> Self {
+                        Self {
+                            rep: rep as *mut u8,
+                            _marker: core::marker::PhantomData,
+                        }
+                    }
+                    /// Gets access to the underlying `T` in this resource.
+                    pub fn get<T: GuestPorts>(&self) -> &T {
+                        let ptr = unsafe { &mut *self.as_ptr::<T>() };
+                        ptr.as_ref().unwrap()
+                    }
+                    fn as_ptr<T: 'static>(&self) -> *mut _PortsRep<T> {
+                        Ports::type_guard::<T>();
+                        self.rep.cast()
+                    }
+                }
+                unsafe impl _rt::WasmResource for Ports {
+                    #[inline]
+                    unsafe fn drop(_handle: u32) {
+                        #[cfg(not(target_arch = "wasm32"))]
+                        unreachable!();
+                        #[cfg(target_arch = "wasm32")]
+                        {
+                            #[link(wasm_import_module = "[export]taho:models/port")]
+                            unsafe extern "C" {
+                                #[link_name = "[resource-drop]ports"]
+                                fn drop(_: u32);
+                            }
+                            unsafe { drop(_handle) };
+                        }
+                    }
+                }
+                #[doc(hidden)]
+                #[allow(non_snake_case)]
+                pub unsafe fn _export_constructor_ports_cabi<T: GuestPorts>() -> i32 {
+                    #[cfg(target_arch = "wasm32")] _rt::run_ctors_once();
+                    let result0 = Ports::new(T::new());
+                    (result0).take_handle() as i32
+                }
+                #[doc(hidden)]
+                #[allow(non_snake_case)]
+                pub unsafe fn _export_method_ports_call_port_cabi<T: GuestPorts>(
+                    arg0: *mut u8,
+                    arg1: *mut u8,
+                    arg2: usize,
+                    arg3: *mut u8,
+                    arg4: usize,
+                    arg5: *mut u8,
+                    arg6: usize,
+                    arg7: *mut u8,
+                    arg8: usize,
+                    arg9: *mut u8,
+                    arg10: usize,
+                ) -> *mut u8 {
+                    #[cfg(target_arch = "wasm32")] _rt::run_ctors_once();
+                    let len0 = arg2;
+                    let bytes0 = _rt::Vec::from_raw_parts(arg1.cast(), len0, len0);
+                    let len1 = arg4;
+                    let len2 = arg6;
+                    let bytes2 = _rt::Vec::from_raw_parts(arg5.cast(), len2, len2);
+                    let len3 = arg8;
+                    let bytes3 = _rt::Vec::from_raw_parts(arg7.cast(), len3, len3);
+                    let base7 = arg9;
+                    let len7 = arg10;
+                    let mut result7 = _rt::Vec::with_capacity(len7);
+                    for i in 0..len7 {
+                        let base = base7
+                            .add(i * (2 * ::core::mem::size_of::<*const u8>()));
+                        let e7 = {
+                            let l4 = *base.add(0).cast::<*mut u8>();
+                            let l5 = *base
+                                .add(::core::mem::size_of::<*const u8>())
+                                .cast::<usize>();
+                            let len6 = l5;
+                            let bytes6 = _rt::Vec::from_raw_parts(l4.cast(), len6, len6);
+                            _rt::string_lift(bytes6)
+                        };
+                        result7.push(e7);
+                    }
+                    _rt::cabi_dealloc(
+                        base7,
+                        len7 * (2 * ::core::mem::size_of::<*const u8>()),
+                        ::core::mem::size_of::<*const u8>(),
+                    );
+                    let result8 = T::call_port(
+                        unsafe { PortsBorrow::lift(arg0 as u32 as usize) }.get(),
+                        _rt::string_lift(bytes0),
+                        PortData {
+                            data: _rt::Vec::from_raw_parts(arg3.cast(), len1, len1),
+                            wfid: _rt::string_lift(bytes2),
+                            wfstate: _rt::string_lift(bytes3),
+                            wfhist: result7,
+                        },
+                    );
+                    let ptr9 = (&raw mut _RET_AREA.0).cast::<u8>();
+                    match result8 {
+                        Ok(e) => {
+                            *ptr9.add(0).cast::<u8>() = (0i32) as u8;
+                            let PortData {
+                                data: data10,
+                                wfid: wfid10,
+                                wfstate: wfstate10,
+                                wfhist: wfhist10,
+                            } = e;
+                            let vec11 = (data10).into_boxed_slice();
+                            let ptr11 = vec11.as_ptr().cast::<u8>();
+                            let len11 = vec11.len();
+                            ::core::mem::forget(vec11);
+                            *ptr9
+                                .add(2 * ::core::mem::size_of::<*const u8>())
+                                .cast::<usize>() = len11;
+                            *ptr9
+                                .add(::core::mem::size_of::<*const u8>())
+                                .cast::<*mut u8>() = ptr11.cast_mut();
+                            let vec12 = (wfid10.into_bytes()).into_boxed_slice();
+                            let ptr12 = vec12.as_ptr().cast::<u8>();
+                            let len12 = vec12.len();
+                            ::core::mem::forget(vec12);
+                            *ptr9
+                                .add(4 * ::core::mem::size_of::<*const u8>())
+                                .cast::<usize>() = len12;
+                            *ptr9
+                                .add(3 * ::core::mem::size_of::<*const u8>())
+                                .cast::<*mut u8>() = ptr12.cast_mut();
+                            let vec13 = (wfstate10.into_bytes()).into_boxed_slice();
+                            let ptr13 = vec13.as_ptr().cast::<u8>();
+                            let len13 = vec13.len();
+                            ::core::mem::forget(vec13);
+                            *ptr9
+                                .add(6 * ::core::mem::size_of::<*const u8>())
+                                .cast::<usize>() = len13;
+                            *ptr9
+                                .add(5 * ::core::mem::size_of::<*const u8>())
+                                .cast::<*mut u8>() = ptr13.cast_mut();
+                            let vec15 = wfhist10;
+                            let len15 = vec15.len();
+                            let layout15 = _rt::alloc::Layout::from_size_align_unchecked(
+                                vec15.len() * (2 * ::core::mem::size_of::<*const u8>()),
+                                ::core::mem::size_of::<*const u8>(),
+                            );
+                            let result15 = if layout15.size() != 0 {
+                                let ptr = _rt::alloc::alloc(layout15).cast::<u8>();
+                                if ptr.is_null() {
+                                    _rt::alloc::handle_alloc_error(layout15);
+                                }
+                                ptr
+                            } else {
+                                ::core::ptr::null_mut()
+                            };
+                            for (i, e) in vec15.into_iter().enumerate() {
+                                let base = result15
+                                    .add(i * (2 * ::core::mem::size_of::<*const u8>()));
+                                {
+                                    let vec14 = (e.into_bytes()).into_boxed_slice();
+                                    let ptr14 = vec14.as_ptr().cast::<u8>();
+                                    let len14 = vec14.len();
+                                    ::core::mem::forget(vec14);
+                                    *base
+                                        .add(::core::mem::size_of::<*const u8>())
+                                        .cast::<usize>() = len14;
+                                    *base.add(0).cast::<*mut u8>() = ptr14.cast_mut();
+                                }
+                            }
+                            *ptr9
+                                .add(8 * ::core::mem::size_of::<*const u8>())
+                                .cast::<usize>() = len15;
+                            *ptr9
+                                .add(7 * ::core::mem::size_of::<*const u8>())
+                                .cast::<*mut u8>() = result15;
+                        }
+                        Err(e) => {
+                            *ptr9.add(0).cast::<u8>() = (1i32) as u8;
+                            match e {
+                                PortError::NotFound => {
+                                    *ptr9
+                                        .add(::core::mem::size_of::<*const u8>())
+                                        .cast::<u8>() = (0i32) as u8;
+                                }
+                                PortError::Error(e) => {
+                                    *ptr9
+                                        .add(::core::mem::size_of::<*const u8>())
+                                        .cast::<u8>() = (1i32) as u8;
+                                    let vec16 = (e.into_bytes()).into_boxed_slice();
+                                    let ptr16 = vec16.as_ptr().cast::<u8>();
+                                    let len16 = vec16.len();
+                                    ::core::mem::forget(vec16);
+                                    *ptr9
+                                        .add(3 * ::core::mem::size_of::<*const u8>())
+                                        .cast::<usize>() = len16;
+                                    *ptr9
+                                        .add(2 * ::core::mem::size_of::<*const u8>())
+                                        .cast::<*mut u8>() = ptr16.cast_mut();
+                                }
+                            }
+                        }
+                    };
+                    ptr9
+                }
+                #[doc(hidden)]
+                #[allow(non_snake_case)]
+                pub unsafe fn __post_return_method_ports_call_port<T: GuestPorts>(
+                    arg0: *mut u8,
+                ) {
+                    let l0 = i32::from(*arg0.add(0).cast::<u8>());
+                    match l0 {
+                        0 => {
+                            let l1 = *arg0
+                                .add(::core::mem::size_of::<*const u8>())
+                                .cast::<*mut u8>();
+                            let l2 = *arg0
+                                .add(2 * ::core::mem::size_of::<*const u8>())
+                                .cast::<usize>();
+                            let base3 = l1;
+                            let len3 = l2;
+                            _rt::cabi_dealloc(base3, len3 * 1, 1);
+                            let l4 = *arg0
+                                .add(3 * ::core::mem::size_of::<*const u8>())
+                                .cast::<*mut u8>();
+                            let l5 = *arg0
+                                .add(4 * ::core::mem::size_of::<*const u8>())
+                                .cast::<usize>();
+                            _rt::cabi_dealloc(l4, l5, 1);
+                            let l6 = *arg0
+                                .add(5 * ::core::mem::size_of::<*const u8>())
+                                .cast::<*mut u8>();
+                            let l7 = *arg0
+                                .add(6 * ::core::mem::size_of::<*const u8>())
+                                .cast::<usize>();
+                            _rt::cabi_dealloc(l6, l7, 1);
+                            let l8 = *arg0
+                                .add(7 * ::core::mem::size_of::<*const u8>())
+                                .cast::<*mut u8>();
+                            let l9 = *arg0
+                                .add(8 * ::core::mem::size_of::<*const u8>())
+                                .cast::<usize>();
+                            let base12 = l8;
+                            let len12 = l9;
+                            for i in 0..len12 {
+                                let base = base12
+                                    .add(i * (2 * ::core::mem::size_of::<*const u8>()));
+                                {
+                                    let l10 = *base.add(0).cast::<*mut u8>();
+                                    let l11 = *base
+                                        .add(::core::mem::size_of::<*const u8>())
+                                        .cast::<usize>();
+                                    _rt::cabi_dealloc(l10, l11, 1);
+                                }
+                            }
+                            _rt::cabi_dealloc(
+                                base12,
+                                len12 * (2 * ::core::mem::size_of::<*const u8>()),
+                                ::core::mem::size_of::<*const u8>(),
+                            );
+                        }
+                        _ => {
+                            let l13 = i32::from(
+                                *arg0.add(::core::mem::size_of::<*const u8>()).cast::<u8>(),
+                            );
+                            match l13 {
+                                0 => {}
+                                _ => {
+                                    let l14 = *arg0
+                                        .add(2 * ::core::mem::size_of::<*const u8>())
+                                        .cast::<*mut u8>();
+                                    let l15 = *arg0
+                                        .add(3 * ::core::mem::size_of::<*const u8>())
+                                        .cast::<usize>();
+                                    _rt::cabi_dealloc(l14, l15, 1);
+                                }
+                            }
+                        }
+                    }
+                }
+                pub trait Guest {
+                    type Ports: GuestPorts;
+                }
+                pub trait GuestPorts: 'static {
+                    #[doc(hidden)]
+                    unsafe fn _resource_new(val: *mut u8) -> u32
+                    where
+                        Self: Sized,
+                    {
+                        #[cfg(not(target_arch = "wasm32"))]
+                        {
+                            let _ = val;
+                            unreachable!();
+                        }
+                        #[cfg(target_arch = "wasm32")]
+                        {
+                            #[link(wasm_import_module = "[export]taho:models/port")]
+                            unsafe extern "C" {
+                                #[link_name = "[resource-new]ports"]
+                                fn new(_: *mut u8) -> u32;
+                            }
+                            unsafe { new(val) }
+                        }
+                    }
+                    #[doc(hidden)]
+                    fn _resource_rep(handle: u32) -> *mut u8
+                    where
+                        Self: Sized,
+                    {
+                        #[cfg(not(target_arch = "wasm32"))]
+                        {
+                            let _ = handle;
+                            unreachable!();
+                        }
+                        #[cfg(target_arch = "wasm32")]
+                        {
+                            #[link(wasm_import_module = "[export]taho:models/port")]
+                            unsafe extern "C" {
+                                #[link_name = "[resource-rep]ports"]
+                                fn rep(_: u32) -> *mut u8;
+                            }
+                            unsafe { rep(handle) }
+                        }
+                    }
+                    fn new() -> Self;
+                    fn call_port(
+                        &self,
+                        port_name: _rt::String,
+                        data: PortData,
+                    ) -> Result<PortData, PortError>;
+                }
+                #[doc(hidden)]
+                macro_rules! __export_taho_models_port_cabi {
+                    ($ty:ident with_types_in $($path_to_types:tt)*) => {
+                        const _ : () = { #[unsafe (export_name =
+                        "taho:models/port#[constructor]ports")] unsafe extern "C" fn
+                        export_constructor_ports() -> i32 { unsafe { $($path_to_types)*::
+                        _export_constructor_ports_cabi::<<$ty as $($path_to_types)*::
+                        Guest >::Ports > () } } #[unsafe (export_name =
+                        "taho:models/port#[method]ports.call-port")] unsafe extern "C" fn
+                        export_method_ports_call_port(arg0 : * mut u8, arg1 : * mut u8,
+                        arg2 : usize, arg3 : * mut u8, arg4 : usize, arg5 : * mut u8,
+                        arg6 : usize, arg7 : * mut u8, arg8 : usize, arg9 : * mut u8,
+                        arg10 : usize,) -> * mut u8 { unsafe { $($path_to_types)*::
+                        _export_method_ports_call_port_cabi::<<$ty as
+                        $($path_to_types)*:: Guest >::Ports > (arg0, arg1, arg2, arg3,
+                        arg4, arg5, arg6, arg7, arg8, arg9, arg10) } } #[unsafe
+                        (export_name =
+                        "cabi_post_taho:models/port#[method]ports.call-port")] unsafe
+                        extern "C" fn _post_return_method_ports_call_port(arg0 : * mut
+                        u8,) { unsafe { $($path_to_types)*::
+                        __post_return_method_ports_call_port::<<$ty as
+                        $($path_to_types)*:: Guest >::Ports > (arg0) } } const _ : () = {
+                        #[doc(hidden)] #[unsafe (export_name =
+                        "taho:models/port#[dtor]ports")] #[allow(non_snake_case)] unsafe
+                        extern "C" fn dtor(rep : * mut u8) { unsafe {
+                        $($path_to_types)*:: Ports::dtor::< <$ty as $($path_to_types)*::
+                        Guest >::Ports > (rep) } } }; };
+                    };
+                }
+                #[doc(hidden)]
+                pub(crate) use __export_taho_models_port_cabi;
+                #[cfg_attr(target_pointer_width = "64", repr(align(8)))]
+                #[cfg_attr(target_pointer_width = "32", repr(align(4)))]
+                struct _RetArea(
+                    [::core::mem::MaybeUninit<
+                        u8,
+                    >; 9 * ::core::mem::size_of::<*const u8>()],
+                );
+                static mut _RET_AREA: _RetArea = _RetArea(
+                    [::core::mem::MaybeUninit::uninit(); 9
+                        * ::core::mem::size_of::<*const u8>()],
+                );
+            }
         }
     }
 }
@@ -2525,68 +4325,12 @@ mod _rt {
     #![allow(dead_code, clippy::all)]
     pub use alloc_crate::string::String;
     pub use alloc_crate::vec::Vec;
-    #[cfg(target_arch = "wasm32")]
-    pub fn run_ctors_once() {
-        wit_bindgen_rt::run_ctors_once();
-    }
     pub use alloc_crate::alloc;
-    pub fn as_i32<T: AsI32>(t: T) -> i32 {
-        t.as_i32()
-    }
-    pub trait AsI32 {
-        fn as_i32(self) -> i32;
-    }
-    impl<'a, T: Copy + AsI32> AsI32 for &'a T {
-        fn as_i32(self) -> i32 {
-            (*self).as_i32()
-        }
-    }
-    impl AsI32 for i32 {
-        #[inline]
-        fn as_i32(self) -> i32 {
-            self as i32
-        }
-    }
-    impl AsI32 for u32 {
-        #[inline]
-        fn as_i32(self) -> i32 {
-            self as i32
-        }
-    }
-    impl AsI32 for i16 {
-        #[inline]
-        fn as_i32(self) -> i32 {
-            self as i32
-        }
-    }
-    impl AsI32 for u16 {
-        #[inline]
-        fn as_i32(self) -> i32 {
-            self as i32
-        }
-    }
-    impl AsI32 for i8 {
-        #[inline]
-        fn as_i32(self) -> i32 {
-            self as i32
-        }
-    }
-    impl AsI32 for u8 {
-        #[inline]
-        fn as_i32(self) -> i32 {
-            self as i32
-        }
-    }
-    impl AsI32 for char {
-        #[inline]
-        fn as_i32(self) -> i32 {
-            self as i32
-        }
-    }
-    impl AsI32 for usize {
-        #[inline]
-        fn as_i32(self) -> i32 {
-            self as i32
+    pub unsafe fn string_lift(bytes: Vec<u8>) -> String {
+        if cfg!(debug_assertions) {
+            String::from_utf8(bytes).unwrap()
+        } else {
+            String::from_utf8_unchecked(bytes)
         }
     }
     pub unsafe fn cabi_dealloc(ptr: *mut u8, size: usize, align: usize) {
@@ -2595,6 +4339,13 @@ mod _rt {
         }
         let layout = alloc::Layout::from_size_align_unchecked(size, align);
         alloc::dealloc(ptr, layout);
+    }
+    pub unsafe fn invalid_enum_discriminant<T>() -> T {
+        if cfg!(debug_assertions) {
+            panic!("invalid enum discriminant")
+        } else {
+            unsafe { core::hint::unreachable_unchecked() }
+        }
     }
     use core::fmt;
     use core::marker;
@@ -2670,21 +4421,70 @@ mod _rt {
             }
         }
     }
+    #[cfg(target_arch = "wasm32")]
+    pub fn run_ctors_once() {
+        wit_bindgen_rt::run_ctors_once();
+    }
+    pub fn as_i32<T: AsI32>(t: T) -> i32 {
+        t.as_i32()
+    }
+    pub trait AsI32 {
+        fn as_i32(self) -> i32;
+    }
+    impl<'a, T: Copy + AsI32> AsI32 for &'a T {
+        fn as_i32(self) -> i32 {
+            (*self).as_i32()
+        }
+    }
+    impl AsI32 for i32 {
+        #[inline]
+        fn as_i32(self) -> i32 {
+            self as i32
+        }
+    }
+    impl AsI32 for u32 {
+        #[inline]
+        fn as_i32(self) -> i32 {
+            self as i32
+        }
+    }
+    impl AsI32 for i16 {
+        #[inline]
+        fn as_i32(self) -> i32 {
+            self as i32
+        }
+    }
+    impl AsI32 for u16 {
+        #[inline]
+        fn as_i32(self) -> i32 {
+            self as i32
+        }
+    }
+    impl AsI32 for i8 {
+        #[inline]
+        fn as_i32(self) -> i32 {
+            self as i32
+        }
+    }
+    impl AsI32 for u8 {
+        #[inline]
+        fn as_i32(self) -> i32 {
+            self as i32
+        }
+    }
+    impl AsI32 for char {
+        #[inline]
+        fn as_i32(self) -> i32 {
+            self as i32
+        }
+    }
+    impl AsI32 for usize {
+        #[inline]
+        fn as_i32(self) -> i32 {
+            self as i32
+        }
+    }
     pub use alloc_crate::boxed::Box;
-    pub unsafe fn string_lift(bytes: Vec<u8>) -> String {
-        if cfg!(debug_assertions) {
-            String::from_utf8(bytes).unwrap()
-        } else {
-            String::from_utf8_unchecked(bytes)
-        }
-    }
-    pub unsafe fn invalid_enum_discriminant<T>() -> T {
-        if cfg!(debug_assertions) {
-            panic!("invalid enum discriminant")
-        } else {
-            unsafe { core::hint::unreachable_unchecked() }
-        }
-    }
     extern crate alloc as alloc_crate;
 }
 /// Generates `#[unsafe(no_mangle)]` functions to export the specified type as
@@ -2717,12 +4517,13 @@ macro_rules! __export_models_impl {
         exports::taho::models::model_data::__export_taho_models_model_data_cabi!($ty
         with_types_in $($path_to_types_root)*:: exports::taho::models::model_data);
         $($path_to_types_root)*::
-        exports::taho::models::port::__export_taho_models_port_cabi!($ty with_types_in
-        $($path_to_types_root)*:: exports::taho::models::port); $($path_to_types_root)*::
         exports::taho::models::crud::__export_taho_models_crud_cabi!($ty with_types_in
         $($path_to_types_root)*:: exports::taho::models::crud); $($path_to_types_root)*::
         exports::taho::models::subscriber::__export_taho_models_subscriber_cabi!($ty
         with_types_in $($path_to_types_root)*:: exports::taho::models::subscriber);
+        $($path_to_types_root)*::
+        exports::taho::models::port::__export_taho_models_port_cabi!($ty with_types_in
+        $($path_to_types_root)*:: exports::taho::models::port);
     };
 }
 #[doc(inline)]
@@ -2733,16 +4534,41 @@ pub(crate) use __export_models_impl as export;
 )]
 #[doc(hidden)]
 #[allow(clippy::octal_escapes)]
-pub static __WIT_BINDGEN_COMPONENT_TYPE: [u8; 1970] = *b"\
-\0asm\x0d\0\x01\0\0\x19\x16wit-component-encoding\x04\0\x07\xb5\x0e\x01A\x02\x01\
-A\x0c\x01B%\x01s\x04\0\x0amodel-name\x03\0\0\x01s\x04\0\x0cadapter-name\x03\0\x02\
-\x01s\x04\0\x0bdomain-name\x03\0\x04\x01s\x04\0\x09port-name\x03\0\x06\x01s\x04\0\
-\x0drelation-name\x03\0\x08\x01s\x04\0\x0dworkflow-name\x03\0\x0a\x01s\x04\0\x0f\
-datasource-name\x03\0\x0c\x01r\x03\x04names\x04wfid\x0b\x07wfstates\x04\0\x0apor\
-t-event\x03\0\x0e\x01m\x02\x07inbound\x08outbound\x04\0\x09direction\x03\0\x10\x01\
-p\x03\x01p\x0f\x01r\x0d\x04name\x07\x08adapters\x12\x09direction\x11\x08consumes\
-\x13\x08produces\x13\x08callback\x07\x07enabled\x7f\x07timeoutz\x05retryz\x08int\
-ervalz\x0fcircuit-breaker\x7f\x06retestz\x04undo\x07\x04\0\x04port\x03\0\x14\x01\
+pub static __WIT_BINDGEN_COMPONENT_TYPE: [u8; 3105] = *b"\
+\0asm\x0d\0\x01\0\0\x19\x16wit-component-encoding\x04\0\x07\xa4\x17\x01A\x02\x01\
+A\x16\x01B\x09\x01q\x01\x05error\x01s\0\x04\0\x0aport-error\x03\0\0\x01p}\x01ps\x01\
+r\x04\x04data\x02\x04wfids\x07wfstates\x06wfhist\x03\x04\0\x09port-data\x03\0\x04\
+\x01j\x01\x05\x01\x01\x01@\x03\x0amodel-names\x09port-names\x04data\x05\0\x06\x04\
+\0\x0fcall-model-port\x01\x07\x03\0\x13taho:models/inbound\x05\0\x01B\x06\x01q\x01\
+\x05error\x01s\0\x04\0\x0dadapter-error\x03\0\0\x01p}\x01j\x01\x02\x01\x01\x01@\x02\
+\x0cadapter-names\x04data\x02\0\x03\x04\0\x16call-adapter-component\x01\x04\x03\0\
+\x14taho:models/outbound\x05\x01\x01B\x15\x01o\x02ss\x01p\0\x04\0\x09key-value\x03\
+\0\x01\x01q\x01\x05error\x01s\0\x04\0\x05error\x03\0\x03\x04\0\x0bstorage-api\x03\
+\x01\x01k\x02\x01i\x05\x01@\x01\x06config\x06\0\x07\x04\0\x18[constructor]storag\
+e-api\x01\x08\x01h\x05\x01p}\x01j\x01s\x01\x04\x01@\x03\x04self\x09\x05querys\x04\
+data\x0a\0\x0b\x04\0\x18[method]storage-api.save\x01\x0c\x01j\x01\x0a\x01\x04\x01\
+@\x02\x04self\x09\x05querys\0\x0d\x04\0\x18[method]storage-api.find\x01\x0e\x01j\
+\x01z\x01\x04\x01@\x02\x04self\x09\x05querys\0\x0f\x04\0\x1a[method]storage-api.\
+delete\x01\x10\x03\0\x16taho:models/datasource\x05\x02\x01B\x02\x01@\x02\x05topi\
+cs\x07messages\x01\0\x04\0\x07publish\x01\0\x03\0\x15taho:models/publisher\x05\x03\
+\x01B\x1a\x01p}\x01o\x02s\0\x01p\x01\x04\0\x09key-value\x03\0\x02\x01m\x01\x05er\
+ror\x04\0\x09llm-error\x03\0\x04\x01j\x01\0\x01\x05\x04\0\x03res\x03\0\x06\x01ps\
+\x01r\x02\x0fclassifications\x08\x06prompts\x04\0\x0aclass-spec\x03\0\x09\x04\0\x07\
+llm-api\x03\x01\x01i\x0b\x01@\0\0\x0c\x04\0\x14[constructor]llm-api\x01\x0d\x01h\
+\x0b\x01k\x03\x01@\x03\x04self\x0e\x04text\0\x07context\x0f\0\x07\x04\0\x16[meth\
+od]llm-api.prompt\x01\x10\x01@\x03\x04self\x0e\x03mp4\0\x07context\x0f\0\x07\x04\
+\0\x1c[method]llm-api.prompt-audio\x01\x11\x04\0\x1c[method]llm-api.prompt-video\
+\x01\x11\x01@\x03\x04self\x0e\x04spec\x0a\x07context\x0f\0\x07\x04\0\x18[method]\
+llm-api.classify\x01\x12\x01@\x04\x04self\x0e\x08templates\x06prompts\x07context\
+\x0f\0\x07\x04\0\x1d[method]llm-api.structure-res\x01\x13\x03\0\x0ftaho:models/l\
+lm\x05\x04\x01B%\x01s\x04\0\x0amodel-name\x03\0\0\x01s\x04\0\x0cadapter-name\x03\
+\0\x02\x01s\x04\0\x0bdomain-name\x03\0\x04\x01s\x04\0\x09port-name\x03\0\x06\x01\
+s\x04\0\x0drelation-name\x03\0\x08\x01s\x04\0\x0dworkflow-name\x03\0\x0a\x01s\x04\
+\0\x0fdatasource-name\x03\0\x0c\x01r\x03\x04names\x04wfid\x0b\x07wfstates\x04\0\x0a\
+port-event\x03\0\x0e\x01m\x02\x07inbound\x08outbound\x04\0\x09direction\x03\0\x10\
+\x01p\x03\x01p\x0f\x01r\x0d\x04name\x07\x08adapters\x12\x09direction\x11\x08cons\
+umes\x13\x08produces\x13\x08callback\x07\x07enabled\x7f\x07timeoutz\x05retryz\x08\
+intervalz\x0fcircuit-breaker\x7f\x06retestz\x04undo\x07\x04\0\x04port\x03\0\x14\x01\
 m\x04\x0bone-to-many\x0bmany-to-one\x0aone-to-one\x0cmany-to-many\x04\0\x0dcardi\
 nalities\x03\0\x16\x01r\x08\x04name\x09\x06domain\x05\x0drelated-model\x01\x0bca\
 rdinality\x17\x0bforeign-keys\x0alocal-only\x7f\x0bkeep-remote\x7f\x04descs\x04\0\
@@ -2751,32 +4577,33 @@ rdinality\x17\x0bforeign-keys\x0alocal-only\x7f\x0bkeep-remote\x7f\x04descs\x04\
 ons\x1d\x0adatasource\x1b\x0dcache-enabled\x7f\x04\0\x0amodel-spec\x03\0\x1e\x01\
 q\x02\x0espec-not-found\x01s\0\x0cspec-invalid\x01s\0\x04\0\x0aspec-error\x03\0\x20\
 \x01j\x01\x1f\x01!\x01@\0\0\"\x04\0\x08get-spec\x01#\x04\0\x11taho:models/model\x05\
-\0\x02\x03\0\0\x0amodel-name\x02\x03\0\0\x0bdomain-name\x01B\x09\x02\x03\x02\x01\
-\x01\x04\0\x0amodel-name\x03\0\0\x02\x03\x02\x01\x02\x04\0\x0bdomain-name\x03\0\x02\
-\x01q\x0a\x07u8-type\x01}\0\x08u16-type\x01{\0\x08u32-type\x01y\0\x08u64-type\x01\
-w\0\x07s8-type\x01~\0\x08s16-type\x01|\0\x08s32-type\x01z\0\x08s64-type\x01x\0\x09\
-char-type\x01t\0\x0bstring-type\x01s\0\x04\0\x09primitive\x03\0\x04\x01p}\x01r\x04\
-\x04uuids\x05model\x01\x06domain\x03\x04data\x06\x04\0\x0emodel-instance\x03\0\x07\
-\x04\0\x16taho:models/model-data\x05\x03\x01B\x0e\x01q\x01\x05error\x01s\0\x04\0\
-\x0aport-error\x03\0\0\x01p}\x01ps\x01r\x04\x04data\x02\x04wfids\x07wfstates\x06\
-wfhist\x03\x04\0\x09port-data\x03\0\x04\x04\0\x05ports\x03\x01\x01i\x06\x01@\0\0\
-\x07\x04\0\x12[constructor]ports\x01\x08\x01h\x06\x01j\x01\x05\x01\x01\x01@\x03\x04\
-self\x09\x04names\x04data\x05\0\x0a\x04\0\x19[method]ports.invoke-port\x01\x0b\x04\
-\0\x10taho:models/port\x05\x04\x01B\x16\x01o\x02ss\x01p\0\x01k\x01\x04\0\x09key-\
-value\x03\0\x02\x01q\x01\x05error\x01s\0\x04\0\x0acrud-error\x03\0\x04\x04\0\x08\
-crud-api\x03\x01\x01i\x06\x01@\x01\x06config\x03\0\x07\x04\0\x15[constructor]cru\
-d-api\x01\x08\x01h\x06\x01p}\x01j\x01\x0a\x01\x05\x01@\x03\x04self\x09\x05querys\
-\x04data\x0a\0\x0b\x04\0\x17[method]crud-api.create\x01\x0c\x01@\x02\x04self\x09\
-\x05querys\0\x0b\x04\0\x15[method]crud-api.read\x01\x0d\x01j\x01z\x01\x05\x01@\x03\
-\x04self\x09\x05querys\x04data\x0a\0\x0e\x04\0\x17[method]crud-api.update\x01\x0f\
-\x01@\x02\x04self\x09\x05querys\0\x0e\x04\0\x17[method]crud-api.delete\x01\x10\x04\
-\0\x10taho:models/crud\x05\x05\x01B\x0d\x01s\x04\0\x05topic\x03\0\0\x04\0\x0csub\
-scription\x03\x01\x01i\x02\x01@\0\0\x03\x04\0\x19[constructor]subscription\x01\x04\
-\x01h\x02\x01p\x01\x01@\x01\x04self\x05\0\x06\x04\0\x1e[method]subscription.subs\
-cribe\x01\x07\x01p}\x01@\x03\x04self\x05\x05events\x07message\x08\x01\0\x04\0![m\
-ethod]subscription.handle-event\x01\x09\x04\0\x16taho:models/subscriber\x05\x06\x04\
-\0\x12taho:models/models\x04\0\x0b\x0c\x01\0\x06models\x03\0\0\0G\x09producers\x01\
-\x0cprocessed-by\x02\x0dwit-component\x070.227.1\x10wit-bindgen-rust\x060.41.0";
+\x05\x02\x03\0\x05\x0amodel-name\x02\x03\0\x05\x0bdomain-name\x01B\x09\x02\x03\x02\
+\x01\x06\x04\0\x0amodel-name\x03\0\0\x02\x03\x02\x01\x07\x04\0\x0bdomain-name\x03\
+\0\x02\x01q\x0a\x07u8-type\x01}\0\x08u16-type\x01{\0\x08u32-type\x01y\0\x08u64-t\
+ype\x01w\0\x07s8-type\x01~\0\x08s16-type\x01|\0\x08s32-type\x01z\0\x08s64-type\x01\
+x\0\x09char-type\x01t\0\x0bstring-type\x01s\0\x04\0\x09primitive\x03\0\x04\x01p}\
+\x01r\x04\x04uuids\x05model\x01\x06domain\x03\x04data\x06\x04\0\x0emodel-instanc\
+e\x03\0\x07\x04\0\x16taho:models/model-data\x05\x08\x01B\x16\x01o\x02ss\x01p\0\x01\
+k\x01\x04\0\x09key-value\x03\0\x02\x01q\x01\x05error\x01s\0\x04\0\x0acrud-error\x03\
+\0\x04\x04\0\x08crud-api\x03\x01\x01i\x06\x01@\x01\x06config\x03\0\x07\x04\0\x15\
+[constructor]crud-api\x01\x08\x01h\x06\x01p}\x01j\x01\x0a\x01\x05\x01@\x03\x04se\
+lf\x09\x05querys\x04data\x0a\0\x0b\x04\0\x17[method]crud-api.create\x01\x0c\x01@\
+\x02\x04self\x09\x05querys\0\x0b\x04\0\x15[method]crud-api.read\x01\x0d\x01j\x01\
+z\x01\x05\x01@\x03\x04self\x09\x05querys\x04data\x0a\0\x0e\x04\0\x17[method]crud\
+-api.update\x01\x0f\x01@\x02\x04self\x09\x05querys\0\x0e\x04\0\x17[method]crud-a\
+pi.delete\x01\x10\x04\0\x10taho:models/crud\x05\x09\x01B\x0d\x01s\x04\0\x05topic\
+\x03\0\0\x04\0\x0csubscription\x03\x01\x01i\x02\x01@\0\0\x03\x04\0\x19[construct\
+or]subscription\x01\x04\x01h\x02\x01p\x01\x01@\x01\x04self\x05\0\x06\x04\0\x1e[m\
+ethod]subscription.subscribe\x01\x07\x01p}\x01@\x03\x04self\x05\x05events\x07mes\
+sage\x08\x01\0\x04\0![method]subscription.handle-event\x01\x09\x04\0\x16taho:mod\
+els/subscriber\x05\x0a\x01B\x0e\x01q\x02\x09not-found\0\0\x05error\x01s\0\x04\0\x0a\
+port-error\x03\0\0\x01p}\x01ps\x01r\x04\x04data\x02\x04wfids\x07wfstates\x06wfhi\
+st\x03\x04\0\x09port-data\x03\0\x04\x04\0\x05ports\x03\x01\x01i\x06\x01@\0\0\x07\
+\x04\0\x12[constructor]ports\x01\x08\x01h\x06\x01j\x01\x05\x01\x01\x01@\x03\x04s\
+elf\x09\x09port-names\x04data\x05\0\x0a\x04\0\x17[method]ports.call-port\x01\x0b\
+\x04\0\x10taho:models/port\x05\x0b\x04\0\x12taho:models/models\x04\0\x0b\x0c\x01\
+\0\x06models\x03\0\0\0G\x09producers\x01\x0cprocessed-by\x02\x0dwit-component\x07\
+0.227.1\x10wit-bindgen-rust\x060.41.0";
 #[inline(never)]
 #[doc(hidden)]
 pub fn __link_custom_section_describing_imports() {

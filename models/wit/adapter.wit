@@ -1,0 +1,38 @@
+interface adapter {
+  variant adapter-error { error(string) }
+
+  call-adapter: func(adapter-name: string, data: list<u8>) -> result<list<u8>, adapter-error>;
+
+  variant adapter-types {
+        integration,
+        datasource,
+        service,
+        auth
+    }
+
+    record properties {
+        name: string, 
+        domain: string,
+        adapter-type: adapter-types,
+        version: option<string>
+    }
+}
+
+interface inbound {
+    variant port-error { error(string) }
+
+    record port-data {
+        data: list<u8>,
+        wfid: string,
+        wfstate: string,
+        wfhist: list<string>
+    }
+
+    call-model-port: func(model-name:string, port-name: string, data: port-data) -> result<port-data,  port-error>;
+}
+
+interface outbound {
+    variant adapter-error { error(string) }
+
+    call-adapter-component: func(adapter-name: string, data: list<u8>) -> result<list<u8>, adapter-error>;
+}

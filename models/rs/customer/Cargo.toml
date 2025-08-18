@@ -27,3 +27,6 @@ package = "taho:models"
 
 [package.metadata.component.target]
 path = "../../wit"
+
+# [package.metadata.component.dependencies.target]
+# "taho:crud" = { path = "../host/crates/crud/wit/api.wit", world="crud" }

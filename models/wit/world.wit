@@ -2,10 +2,14 @@
 package taho:models;
 
 world models  {
-    export model;
-    export model-data;
-    export port;
-    export crud;
-    export subscriber;
-
-  }
+  export model;
+  export model-data;
+  export crud;
+  export subscriber;
+  export port;
+  import inbound;
+  import outbound;
+  import datasource;
+  import publisher;
+  import llm;
+}

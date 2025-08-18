@@ -5,6 +5,7 @@ use std::sync::Mutex;
 use serde::{Deserialize, Serialize};
 
 use crate::bindings;
+use crate::bindings::exports::taho;
 use crate::bindings::exports::taho::models::crud::{self, GuestCrudApi};
 use crate::bindings::exports::taho::models::model::{
     self, Datasource, Direction, ModelSpec, Port as PortConfig, PortEvent, SpecError,
@@ -94,16 +95,23 @@ impl GuestPorts for PortFunctions {
                 Ok(data)
             }) as PortFn,
         );
+        h.insert(
+            "call_port_test".to_string(),
+            Box::new(|data: port::PortData| {
+                dbg!(&data);
+                Ok(data)
+            }) as PortFn,
+        );
         Self {
             functions: RefCell::new(h),
         }
     }
 
-    fn invoke_port(&self, name: String, data: PortData) -> Result<PortData, PortError> {
+    fn call_port(&self, port_name: String, data: PortData) -> Result<PortData, PortError> {
         (self
             .functions
             .borrow_mut()
-            .get_mut(&name)
+            .get_mut(&port_name)
             .unwrap_or(&mut (Box::new(|data| Ok(data)) as PortFn)))(data)
     }
 }

@@ -320,20 +320,13 @@ impl GuestPorts for PortFunctions {
                 Ok(data)
             }) as PortFn,
         );
-        h.insert(
-            "new_port".into(),
-            Box::new(|mut data: PortData| {
-                data.data = "new port".into();
-                Ok(data)
-            }) as PortFn,
-        );
 
         Self {
             functions: RefCell::new(h),
         }
     }
 
-    fn invoke_port(&self, name: String, data: PortData) -> Result<PortData, PortError> {
+    fn call_port(&self, name: String, data: PortData) -> Result<PortData, PortError> {
         (self
             .functions
             .borrow_mut()

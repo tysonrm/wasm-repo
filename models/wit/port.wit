@@ -1,5 +1,6 @@
 interface port {
   variant port-error {
+    not-found,
     error(string),
   }
 
@@ -12,6 +13,6 @@ interface port {
 
   resource ports {
     constructor();
-    invoke-port: func(name: string, data: port-data) -> result<port-data, port-error>;
+    call-port: func(port-name: string, data: port-data) -> result<port-data, port-error>;
   }
 }

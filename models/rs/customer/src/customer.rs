@@ -97,19 +97,15 @@ impl GuestPorts for PortFunctions {
             "find".to_string(),
             Box::new(|mut data: port::PortData| {
                 println!("customer.find ****");
-                let mut customer = Customer::try_from(&data.data).unwrap_or_default();
+                let customer = Customer::try_from(&data.data).unwrap_or_default();
                 println!("{customer:?}");
-                customer.last_name = "Smith".into();
-                data.wfstate = "CustomerFound".into();
+                let customer = Customer {
+                    first_name: "Alan".into(),
+                    last_name: "Turing".into(),
+                    ..Default::default()
+                };
                 data.data = customer.into();
-                Ok(data)
-            }) as PortFn,
-        );
-        h.insert(
-            "port1".to_string(),
-            Box::new(|mut data: port::PortData| {
-                println!("port1 😜");
-                data.data = r#"<html><body><div class="container"><iframe width="750" height="500" src="https://app.surrealdb.com/mini?theme=auto&resultmode=combined" title="Surrealist Mini" frameborder="0" allowTransparency="true" referrerpolicy="strict-origin-when-cross-origin"></iframe></div> </body> </html>"#.as_bytes().to_vec();
+                data.wfstate = "CustomerFound".into();
                 Ok(data)
             }) as PortFn,
         );
@@ -118,11 +114,11 @@ impl GuestPorts for PortFunctions {
         }
     }
 
-    fn invoke_port(&self, name: String, data: PortData) -> Result<PortData, PortError> {
+    fn call_port(&self, port_name: String, data: PortData) -> Result<PortData, PortError> {
         (self
             .functions
             .borrow_mut()
-            .get_mut(&name)
+            .get_mut(&port_name)
             .unwrap_or(&mut (Box::new(|data| Ok(data)) as PortFn)))(data)
     }
 }

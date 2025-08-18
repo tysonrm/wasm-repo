@@ -1,1 +1,1 @@
-cp 
+cp /Users/tysonmidboe/opnbook/wasm-repo/target/wasm32-wasip2/release/*.wasm /Users/tysonmidboe/opnbook/wasm-repo/dist

@@ -1,14 +1,14 @@
 
 interface datasource {
-    type key-value = option<list<tuple<string,string>>>;
+    type key-value = list<tuple<string,string>>;
 
     variant error { error(string) }
 
     resource storage-api {
-        constructor(config: key-value);
-        save: func(query: key-value, data: list<u8>) -> result<string, error>;
-        find: func(query: key-value) -> result<list<u8>, error>;
-        delete: func(query: key-value) -> result<s32, error>;
+        constructor(config: option<key-value>);
+        save: func(query: string, data: list<u8>) -> result<string, error>;
+        find: func(query: string) -> result<list<u8>, error>;
+        delete: func(query: string) -> result<s32, error>;
     }
 }
 
