@@ -100,7 +100,7 @@ impl GuestPorts for PortFunctions {
                 let customer = Customer::try_from(&data.data)?;
                 println!("{customer:?}");
                 let customer = Customer {
-                    first_name: "Alan".into(),
+                    first_name: "Alain".into(),
                     last_name: "Turing".into(),
                     ..Default::default()
                 };
