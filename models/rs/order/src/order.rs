@@ -224,6 +224,25 @@ impl model::Guest for Order {
                 retest: 120,
                 undo: "order.cancel_shipment".into(),
             },
+            PortConfig {
+                name: "delivered".into(),
+                adapters: vec!["fedex".into()],
+                direction: Direction::Outbound,
+                consumes: vec![PortEvent {
+                    name: "order.delivered".to_string(),
+                    wfid: "OrderUp@0.1.0".to_string(),
+                    wfstate: "".to_string(),
+                }],
+                produces: vec![],
+                callback: "".into(),
+                enabled: true,
+                timeout: 10,
+                retry: 10,
+                interval: 60,
+                circuit_breaker: true,
+                retest: 120,
+                undo: "order.cancel_shipment".into(),
+            },
         ];
 
         let ds = Datasource {
